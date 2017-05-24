@@ -1,0 +1,20 @@
+//
+//  RealNameCertificationController.h
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/10/11.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "BaseViewController.h"
+
+@interface RealNameCertificationController : BaseViewController
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentSizeHeight;
+
+@property (weak, nonatomic) IBOutlet UIImageView *identityCardFacade;   //身份证正面
+@property (weak, nonatomic) IBOutlet UIImageView *identityCardBack;     //身份证反面
+@property (weak, nonatomic) IBOutlet UIImageView *bankCardFacade;       //银行卡正面
+@property (weak, nonatomic) IBOutlet UIImageView *identityAndBankCard;  //手持身份证＋银行卡
+
+@end

@@ -1,0 +1,115 @@
+//
+//  FindPasswordController.m
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/9/12.
+//  Copyright © 2016年 月美 刘. All rights reserved.
+//
+
+#import "FindPasswordController.h"
+#import "UIColor+DWColor.h"
+#import "RequestFindPassword.h"
+#import "RequestVerifyCode.h"
+
+@interface FindPasswordController ()
+
+@end
+
+@implementation FindPasswordController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    [self showBackBtn];
+    self.title = @"找回密码";
+    self.view.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+}
+
+//"获取验证码"的事件
+
+
+- (IBAction)getVerificationCodeBtnAction:(id)sender {
+ 
+    if ([self.userName.text isPhoneNumber]) {
+        UIButton *btn = sender;
+        btn.backgroundColor = [UIColor whiteColor];
+        btn.userInteractionEnabled = NO;
+        //    self.authCode.userInteractionEnabled = YES;
+        //    self.promptLabel.text = @"接受短信大约需要60秒";
+        __block int timeout=60; //倒计时时间
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+        dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+        dispatch_source_set_event_handler(_timer, ^{
+            if(timeout<=0){ //倒计时结束，关闭
+                //倒计时结束 改变颜色
+                dispatch_source_cancel(_timer);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //设置界面的按钮显示 根据自己需求设置
+                    [btn setTitle:@"发送验证码" forState:UIControlStateNormal];
+                    btn.userInteractionEnabled = YES;
+                });
+            }else{
+                int seconds = timeout % 120;
+                NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //设置界面的按钮显示 根据自己需求设置
+                    //NSLog(@"____%@",strTime);
+                    [UIView beginAnimations:nil context:nil];
+                    [UIView setAnimationDuration:1];
+                    [btn setTitle:[NSString stringWithFormat:@"%@秒",strTime] forState:UIControlStateNormal];
+                    [UIView commitAnimations];
+                    btn.userInteractionEnabled = NO;
+                });
+                timeout--;
+            }
+        });
+        dispatch_resume(_timer);
+        
+        RequestVerifyCode *verifyCode = [[RequestVerifyCode alloc] init];
+        verifyCode.mobile = self.userName.text;
+        verifyCode.type = 2;
+        BaseRequest *baseReq = [[BaseRequest alloc] init];
+        baseReq.data = [verifyCode yy_modelToJSONObject];
+        baseReq.encryptionType = RequestMD5;
+        [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:@"act=Api/VerifyCode/requestVerifyCode" sign:[[baseReq.data yy_modelToJSONString] MD5Hash] requestMethod:GET success:^(id response) {
+            BaseResponse *baseRes = [BaseResponse yy_modelWithJSON:response];
+            NSLog(@"%@", response);
+        } faild:^(id error) {
+            
+        }];
+    }
+}
+
+//"确定"的事件
+- (IBAction)findPasswordBtnAction:(id)sender {
+    RequestFindPassword *findPassword = [[RequestFindPassword alloc] init];
+    findPassword.mobile = self.userName.text;
+    findPassword.verify_code = self.verificationCode.text;
+    findPassword.password = self.resetPassword.text;
+    
+    BaseRequest *baseReq = [[BaseRequest alloc] init];
+    baseReq.token = [AuthenticationModel getLoginKey];
+    baseReq.encryptionType = RequestMD5;
+    baseReq.data = findPassword;
+    
+    [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:@"act=Api/User/requestForgottenPassword" sign:[[baseReq.data yy_modelToJSONString] MD5Hash] requestMethod:GET success:^(id response) {
+        
+        BaseResponse *baseRes = [BaseResponse yy_modelWithJSON:response];
+        NSLog(@"%@", response);
+        
+        if (baseRes.resultCode == 1) {
+            //找回密码成功,界面跳转至"登录"界面
+            [self.navigationController popViewControllerAnimated:YES];
+        }else {
+            [self showToast:@"账号或验证码不正确"];
+            //        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"提示" message:@"账号或密码错误！" preferredStyle:UIAlertControllerStyleAlert];
+            //        [alertC addAction:[UIAlertAction actionWithTitle:@"重新输入" style:UIAlertActionStyleDefault handler:nil]];
+            //        [self presentViewController:alertC animated:YES completion:nil];
+        }
+    } faild:^(id error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+@end

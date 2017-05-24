@@ -1,0 +1,76 @@
+//
+//  DWHelper.m
+//  DWduifubao
+//
+//  Created by kkk on 16/9/12.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "DWHelper.h"
+
+@implementation DWHelper
+
++ (id)shareHelper {
+    static DWHelper *helper = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        helper = [[DWHelper alloc] init];
+    });
+    return helper;
+}
+//网络请求
+- (void)requestDataWithParm:(id)parm act:(NSString *)actName sign:(id)sign requestMethod:(RequestMethod)method success:(SuccessCallback)success faild:(FaildCallback)faild {
+    if (method == GET) {
+        NSString *url = [NSString stringWithFormat:@"%@%@&sign=%@",kServerUrl,actName,sign];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html",@"application/x-www-form-urlencoded", nil];
+        [manager GET:url parameters:[NSDictionary dictionaryWithObject:parm forKey:@"request"] progress:^(NSProgress * _Nonnull downloadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            success(responseObject);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            faild(error);
+        }];
+        
+        
+    }else if(method == POST) {
+        NSString *url = [NSString stringWithFormat:@"%@%@&sign=%@",kServerUrl, actName,sign];
+        AFHTTPSessionManager *Session = [AFHTTPSessionManager manager];
+        //缓存策略
+        Session.requestSerializer.cachePolicy = 0;
+        Session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+        [Session POST:url parameters:[NSDictionary dictionaryWithObject:parm forKey:@"request"] progress:^(NSProgress * _Nonnull downloadProgress) {
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            success(responseObject);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            faild(error);
+        }];
+    }
+}
+
++ (NSMutableArray *)getCityData
+{
+    NSArray *jsonArray = [[NSArray alloc]init];
+    NSData *fileData = [[NSData alloc]init];
+    NSUserDefaults *UD = [NSUserDefaults standardUserDefaults];
+    if ([UD objectForKey:@"city"] == nil) {
+        NSString *path;
+        path = [[NSBundle mainBundle] pathForResource:@"region" ofType:@"json"];
+        fileData = [NSData dataWithContentsOfFile:path];
+        
+        [UD setObject:fileData forKey:@"city"];
+        [UD synchronize];
+    }
+    else {
+        fileData = [UD objectForKey:@"city"];
+    }
+    NSMutableArray *array = [[NSMutableArray alloc]initWithCapacity:0];
+    jsonArray = [NSJSONSerialization JSONObjectWithData:fileData options:NSJSONReadingMutableLeaves error:nil];
+    for (NSDictionary *dict in jsonArray) {
+        [array addObject:dict];
+    }
+    
+    return array;
+}
+
+@end

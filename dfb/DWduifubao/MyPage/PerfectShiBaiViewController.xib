@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PerfectShiBaiViewController">
+            <connections>
+                <outlet property="label" destination="pa8-mO-HxR" id="eaz-4C-uL5"/>
+                <outlet property="view" destination="XY6-uT-LYk" id="OZi-fi-rfj"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="XY6-uT-LYk">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="审核失败" translatesAutoresizingMaskIntoConstraints="NO" id="fsW-0x-asi">
+                    <rect key="frame" x="142" y="50" width="90" height="90"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="90" id="FOB-n3-3oE"/>
+                        <constraint firstAttribute="height" constant="90" id="TFJ-b5-MqK"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申请失败,请重新提交.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Biw-IF-MFw">
+                    <rect key="frame" x="87" y="190" width="200" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="uXP-9P-6cC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="错误信息:拒接" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pa8-mO-HxR">
+                    <rect key="frame" x="20" y="250" width="335" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33T-rn-acc">
+                    <rect key="frame" x="20" y="587" width="335" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="4Cm-F6-89q"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="重新提交">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="TiJiaoAction:" destination="-1" eventType="touchUpInside" id="zYZ-1c-Zyc"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="pa8-mO-HxR" firstAttribute="leading" secondItem="XY6-uT-LYk" secondAttribute="leading" constant="20" id="0RF-6i-iPj"/>
+                <constraint firstAttribute="trailing" secondItem="pa8-mO-HxR" secondAttribute="trailing" constant="20" id="16J-SG-msI"/>
+                <constraint firstItem="Biw-IF-MFw" firstAttribute="top" secondItem="fsW-0x-asi" secondAttribute="bottom" constant="50" id="ArX-7w-1H9"/>
+                <constraint firstItem="pa8-mO-HxR" firstAttribute="centerX" secondItem="XY6-uT-LYk" secondAttribute="centerX" id="Efb-9r-ifw"/>
+                <constraint firstItem="fsW-0x-asi" firstAttribute="centerX" secondItem="XY6-uT-LYk" secondAttribute="centerX" id="LoZ-6G-iHV"/>
+                <constraint firstItem="fsW-0x-asi" firstAttribute="top" secondItem="XY6-uT-LYk" secondAttribute="top" constant="50" id="ZLO-Ah-agZ"/>
+                <constraint firstItem="pa8-mO-HxR" firstAttribute="top" secondItem="Biw-IF-MFw" secondAttribute="bottom" constant="20" id="fDC-u3-fbe"/>
+                <constraint firstItem="Biw-IF-MFw" firstAttribute="centerX" secondItem="XY6-uT-LYk" secondAttribute="centerX" id="llR-63-tfe"/>
+                <constraint firstItem="33T-rn-acc" firstAttribute="leading" secondItem="XY6-uT-LYk" secondAttribute="leading" constant="20" id="tAS-Iy-qZk"/>
+                <constraint firstAttribute="bottom" secondItem="33T-rn-acc" secondAttribute="bottom" constant="30" id="u02-Gy-gpD"/>
+                <constraint firstAttribute="trailing" secondItem="33T-rn-acc" secondAttribute="trailing" constant="20" id="wti-k2-7PI"/>
+            </constraints>
+            <point key="canvasLocation" x="10" y="489"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="审核失败" width="55" height="55"/>
+    </resources>
+</document>

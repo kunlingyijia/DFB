@@ -1,0 +1,38 @@
+//
+//  BaseViewController.h
+//  DWduifubao
+//
+//  Created by kkk on 16/9/8.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface BaseViewController : UIViewController
+
+- (void)showBackBtn;
+- (void)popRootshowBackBtn;
+//回收键盘
+- (void)endEditingAction:(UIView *)endView;
+
+
+- (void)showSuccessWith:(NSString *)str;
+
+- (void)showProgress;
+- (void)showProgressWithText:(NSString *)text;
+
+- (void)showSucessProgress;
+- (void)showSucessProgressWithText:(NSString *)text;
+
+- (void)showErrorProgress;
+- (void)showErrorProgressWithText:(NSString *)text;
+
+- (void)hideProgress;
+
+- (void)showToast:(NSString *)text;
+
+
+
+
+
+@end

@@ -1,0 +1,130 @@
+//
+//  LoginController.m
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/9/8.
+//  Copyright © 2016年 月美 刘. All rights reserved.
+//
+
+#import "LoginController.h"
+#import "RegisterController.h"
+#import "FindPasswordController.h"
+#import "RequestLogin.h"
+#import "MyPageController.h"
+@interface LoginController ()
+
+@end
+
+@implementation LoginController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self showBackBtn];
+    self.title = @"兑富宝登录";
+    self.view.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+}
+
+//登录事件
+- (IBAction)loginBtnClick:(id)sender {
+    RequestLogin *login = [[RequestLogin alloc] init];
+    login.mobile = self.userName.text;
+    login.password = self.password.text;
+    
+    BaseRequest *baseReq = [[BaseRequest alloc] init];
+    baseReq.token = [AuthenticationModel getLoginToken];
+    baseReq.encryptionType = RequestMD5;
+    baseReq.data = login;
+    __weak typeof(self) weakself = self;
+    [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:@"act=Api/User/requestLogin" sign:[[baseReq.data yy_modelToJSONString] MD5Hash] requestMethod:GET success:^(id response) {
+        BaseResponse *baseRes = [BaseResponse yy_modelWithJSON:response];
+       // NSLog(@"%@", response);
+        if (baseRes.resultCode == 1) {
+            NSDictionary *dic = baseRes.data;
+            NSUserDefaults *userDefau = [NSUserDefaults standardUserDefaults];
+            [userDefau setObject:dic[@"key"] forKey:@"loginKey"];
+            [userDefau setObject:dic[@"token"] forKey:@"loginToken"];
+            
+        
+           // [weakself.navigationController popViewControllerAnimated:YES];
+            //请求配置信息网络请求
+            [weakself PeizhiRequestAction];
+            
+            
+        }else {
+            [weakself showToast:@"账号或密码错误"];
+            
+        }
+    } faild:^(id error) {
+        NSLog(@"%@", error);
+    }];
+    
+}
+//请求配置信息网络请求
+-(void)PeizhiRequestAction{
+    //控件赋值
+    NSString *Token =[AuthenticationModel getLoginToken];
+    
+    if (Token.length!= 0) {
+        BaseRequest *baseReq = [[BaseRequest alloc] init];
+        baseReq.token = [AuthenticationModel getLoginToken];
+        baseReq.encryptionType = AES;
+        baseReq.data = [AESCrypt encrypt:[@{} yy_modelToJSONString] password:[AuthenticationModel getLoginKey]];
+        __weak typeof(self) weakself = self;
+
+        [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:@"act=Api/System/config" sign:[baseReq.data MD5Hash] requestMethod:GET success:^(id response) {
+            NSLog(@"%@",response);
+            //控件赋值
+            BaseResponse *baseRes = [BaseResponse yy_modelWithJSON:response];
+            // NSLog(@"%@", response);
+            if (baseRes.resultCode == 1) {
+                NSDictionary *dic = baseRes.data;
+                NSUserDefaults *userDefau = [NSUserDefaults standardUserDefaults];
+                [userDefau setObject:dic[@"image_hostname"] forKey:@"image_hostname"];
+                [userDefau setObject:dic[@"image_account"] forKey:@"image_account"];
+                                [userDefau setObject:dic[@"image_password"] forKey:@"image_password"];
+                
+                [weakself.navigationController popViewControllerAnimated:YES];
+                
+                
+            }else {
+                [weakself showToast:@"账号或密码错误"];
+                
+            }
+            
+        } faild:^(id error) {
+            NSLog(@"%@", error);
+        }];
+        
+    }else {
+       
+    }
+    
+}
+
+    
+    
+
+//注册事件
+- (IBAction)registerBtnClick:(id)sender {
+    RegisterController *registerController = [[RegisterController alloc] initWithNibName:@"RegisterController" bundle:nil];
+    [self.navigationController pushViewController:registerController animated:YES];
+}
+
+//找回密码事件
+- (IBAction)findPasswordBtnClick:(id)sender {
+    FindPasswordController *findPasswordController = [[FindPasswordController alloc] initWithNibName:@"FindPasswordController" bundle:nil];
+    [self.navigationController pushViewController:findPasswordController animated:YES];
+}
+
+//眼睛事件
+- (IBAction)eyeBtnAction:(id)sender {
+    UIButton *btn = sender;
+    if (btn.selected) {
+        self.password.secureTextEntry = YES;
+        btn.selected = NO;
+    }else {
+        self.password.secureTextEntry = NO;
+        btn.selected = YES;
+    }
+}
+@end

@@ -1,0 +1,240 @@
+//
+//  MyPageController.m
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/9/12.
+//  Copyright © 2016年 月美 刘. All rights reserved.
+//
+
+#import "MyPageController.h"
+#import "BaseNavigationController.h"
+#import "UIColor+DWColor.h"
+#import "LoginController.h"
+#import "IndianaViewController.h"
+#import "SettingController.h"
+#import "PersonalCenterController.h"
+#import "PersonModel.h"
+@interface MyPageController ()
+
+@end
+
+@implementation MyPageController
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    //设置可滑动的高度
+    self.myPageContentSizeHeight.constant =     Height-46;
+    //设置导航框是否隐藏
+    self.navigationController.navigationBar.hidden = YES;
+    self.view.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+    
+    [self requestAction];
+    //下拉刷新
+    
+    [self.MainScrollView addHeaderWithCallback:^{
+        
+        //网络请求
+        
+        [self requestAction];
+        
+        
+        // 结束刷新状态
+        
+        [self.MainScrollView headerEndRefreshing];
+        
+    }];
+    
+}
+
+-(void)requestAction{
+    NSString *Token =[AuthenticationModel getLoginToken];
+    NSLog(@"Token:%@",Token);
+    
+    if (Token.length!= 0) {
+        self.LoginBtn.alpha = 0.0;
+        BaseRequest *baseReq = [[BaseRequest alloc] init];
+        baseReq.token = [AuthenticationModel getLoginToken];
+        baseReq.encryptionType = AES;
+        baseReq.data = [AESCrypt encrypt:[@{} yy_modelToJSONString] password:[AuthenticationModel getLoginKey]];
+        [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:@"act=Api/User/requestUserInfo" sign:[baseReq.data MD5Hash] requestMethod:GET success:^(id response) {
+            PersonModel *personModel = [PersonModel yy_modelWithJSON:response[@"data"]];
+            NSLog(@"%@", response);
+            self.userName.text = personModel.nick_name;
+            NSLog(@"%@",personModel.nick_name);
+            
+        } faild:^(id error) {
+            NSLog(@"%@", error);
+        }];
+ 
+    }
+    
+}
+//"设置"的按钮触发事件
+- (IBAction)settingBtnAction:(id)sender {
+    SettingController *settingController = [[SettingController alloc] init];
+    [self.navigationController pushViewController:settingController animated:YES];
+}
+
+//"信息"的按钮触发事件
+- (IBAction)messageBtnAction:(id)sender {
+}
+
+//"个人中心"的按钮触发事件
+- (IBAction)personalCenterBtnAction:(id)sender {
+    PersonalCenterController *personalCenterController = [[PersonalCenterController alloc] init];
+    [self.navigationController pushViewController:personalCenterController animated:YES];
+}
+
+
+//"查看全部订单
+- (IBAction)allOrderAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+}
+
+
+//"待付款"View事件
+- (IBAction)toPayViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+}
+
+
+
+//"待收货"View事件
+- (IBAction)toReceiveViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+
+//"待评价"View事件
+
+- (IBAction)toEvaluateViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+
+
+//"已完成"View事件
+- (IBAction)hasCompletedViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+//积分
+- (IBAction)integralAction:(UIButton *)sender {
+}
+//竞副金币
+
+- (IBAction)jinFuJinBiAction:(UIButton *)sender {
+}
+
+//景富宝
+- (IBAction)jingFuBaoAction:(UIButton *)sender {
+}
+//负资产
+
+- (IBAction)FuZiChanAction:(UIButton *)sender {
+}
+
+
+//"普通会员"View事件
+
+- (IBAction)generalMemberViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+
+
+//"VIP会员"View事件
+- (void)VIPMemberViewAction:(UITapGestureRecognizer *)sender {
+}
+
+//"创业会员"View事件
+- (IBAction)SYBMemberViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+
+
+//"会员谱"View事件
+- (IBAction)memberChartViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+
+
+
+//"关注的商品"View事件
+- (IBAction)concernedMerchandiseViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+
+
+//"关注的店铺"View事件
+- (IBAction)concernedStoreViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+
+
+//"我要供货"View事件
+- (IBAction)supplyOfMaterialViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+
+
+//"我的代理"View事件
+- (IBAction)myAgentViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+
+
+//"O2O收款"View事件
+- (IBAction)O2OCollectMoneyViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+
+//"兑富夺宝"View事件
+
+- (IBAction)duifuSnatchGemViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+    IndianaViewController *indianaC = [[IndianaViewController alloc] init];
+    [self .navigationController pushViewController:indianaC animated:YES];
+}
+
+//"兑富金融"View事件
+
+- (IBAction)duifuFinanceViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+
+//"网贷一体机"View事件
+
+- (IBAction)P2BAllInOneViewAction:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+
+}
+
+//“用户头像”的按钮触发事件
+- (IBAction)userPhotoBtnAction:(id)sender {
+    LoginController *loginController = [[LoginController alloc] initWithNibName:@"LoginController" bundle:nil];
+    [self.navigationController pushViewController:loginController animated:YES];
+}
+
+#pragma mark - LifeCycle
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBar.hidden = YES;
+}
+- (void)viewWillDisappear:(BOOL)animated {
+     self.navigationController.navigationBar.hidden = NO;
+}
+//修改颜色
+- (IBAction)BTNDown:(UIButton *)sender {
+    sender.backgroundColor = [UIColor redColor];
+}
+
+@end

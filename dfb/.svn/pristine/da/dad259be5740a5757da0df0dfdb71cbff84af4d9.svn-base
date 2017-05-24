@@ -1,0 +1,21 @@
+//
+//  DWTabBarController.h
+//  DWduifubao
+//
+//  Created by kkk on 16/9/8.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+@class HomePageController;
+@class ClassPageController;
+@class ShopCarPageController;
+@class MyPageController;
+@interface DWTabBarController : UITabBarController
+
+@property (nonatomic, strong) HomePageController *homePageController;
+@property (nonatomic, strong) ClassPageController *classPageController;
+@property (nonatomic, strong) ShopCarPageController *shopCarPageController;
+@property (nonatomic, strong) MyPageController *myPageController;
+
+@end

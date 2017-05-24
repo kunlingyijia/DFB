@@ -1,0 +1,34 @@
+//
+//  ReceiveAddressController.m
+//  RiXin
+//
+//  Created by 月美 刘 on 16/9/30.
+//  Copyright © 2016年 月美 刘. All rights reserved.
+//
+
+#import "ReceiveAddressController.h"
+#import "AddressManageController.h"
+
+@interface ReceiveAddressController ()
+
+@end
+
+@implementation ReceiveAddressController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self showBackBtn];
+    self.title = @"新建收货地址";
+    self.view.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+}
+
+//“选择省、市、区”的按钮事件
+- (IBAction)chooseAreaBtnAction:(UIButton *)sender {
+}
+
+//“保存”的按钮事件
+- (IBAction)saveBtnAction:(UIButton *)sender {
+    AddressManageController *addressManageController = [[AddressManageController alloc] init];
+    [self.navigationController pushViewController:addressManageController animated:YES];
+}
+@end

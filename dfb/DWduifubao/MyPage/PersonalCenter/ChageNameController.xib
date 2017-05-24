@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChageNameController">
+            <connections>
+                <outlet property="ChangeNameTextfield" destination="TF5-4x-P8K" id="QUe-cj-EiD"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2-20个字符,可由中英文 数字 &quot;_&quot; &quot;-&quot; 组成" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dk-0X-Hhr">
+                    <rect key="frame" x="0.0" y="40" width="375" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="JZd-DV-9eB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fdh-CK-1vh">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                    <subviews>
+                        <textField autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TF5-4x-P8K">
+                            <rect key="frame" x="20" y="0.0" width="300" height="40"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiO-Ax-khy">
+                            <rect key="frame" x="325" y="5" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="wXW-gk-eYb"/>
+                                <constraint firstAttribute="height" constant="30" id="yEY-Yv-FpB"/>
+                            </constraints>
+                            <state key="normal" image="delete"/>
+                            <connections>
+                                <action selector="clearTextfield:" destination="-1" eventType="touchUpInside" id="1U2-2C-umK"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="BiO-Ax-khy" secondAttribute="trailing" constant="20" id="8NF-mM-sEs"/>
+                        <constraint firstItem="BiO-Ax-khy" firstAttribute="top" secondItem="Fdh-CK-1vh" secondAttribute="top" constant="5" id="FEa-ef-4Zf"/>
+                        <constraint firstItem="TF5-4x-P8K" firstAttribute="leading" secondItem="Fdh-CK-1vh" secondAttribute="leading" constant="20" id="Mwg-xX-1Er"/>
+                        <constraint firstAttribute="bottom" secondItem="TF5-4x-P8K" secondAttribute="bottom" id="QFP-Ts-r2O"/>
+                        <constraint firstItem="BiO-Ax-khy" firstAttribute="leading" secondItem="TF5-4x-P8K" secondAttribute="trailing" constant="5" id="UnX-F6-f31"/>
+                        <constraint firstItem="TF5-4x-P8K" firstAttribute="top" secondItem="Fdh-CK-1vh" secondAttribute="top" id="YEQ-1K-Mzb"/>
+                        <constraint firstAttribute="height" constant="40" id="kFX-Xa-Ffc"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Fdh-CK-1vh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="11g-Hw-Buw"/>
+                <constraint firstItem="Fdh-CK-1vh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1pC-WE-g3w"/>
+                <constraint firstItem="5dk-0X-Hhr" firstAttribute="top" secondItem="Fdh-CK-1vh" secondAttribute="bottom" id="Y8t-kF-Du3"/>
+                <constraint firstItem="5dk-0X-Hhr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZPa-Ss-HC9"/>
+                <constraint firstAttribute="trailing" secondItem="Fdh-CK-1vh" secondAttribute="trailing" id="lDo-1C-VT8"/>
+                <constraint firstAttribute="trailing" secondItem="5dk-0X-Hhr" secondAttribute="trailing" id="qeJ-NW-qJe"/>
+            </constraints>
+            <point key="canvasLocation" x="37.5" y="78.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="delete" width="17" height="17"/>
+    </resources>
+</document>

@@ -1,0 +1,160 @@
+//
+//  SettingController.m
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/9/21.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "SettingController.h"
+#import "SuggestionFeedbackController.h"
+#import "AddressManageController.h"
+#import "LoginController.h"
+@interface SettingController ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *dataSource;
+@end
+
+@implementation SettingController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self showBackBtn];
+    self.title = @"更多设置";
+    self.view.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+    
+    self.dataSource = @[@[@"仅在Wi-Fi下显示图片",@"清除缓存"],@[@"意见反馈",@"收货地址"],@[@"关于万商"]];
+    self.tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    //设置TableView自带Cell的样式
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    self.tableView.frame = CGRectMake(0, 0, Width, 270);
+    
+    //设置TableViewCell的高度
+    self.tableView.rowHeight = 50;
+    
+    //设置TableView不可滑动
+    self.tableView.scrollEnabled = NO;
+    
+    [self.view addSubview:self.tableView];
+    
+    //设置"退出账号"按钮
+    UIButton *exitBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 300, Width-40, 44)];
+    exitBtn.backgroundColor = [UIColor colorWithHexString:kRedColor];
+    [exitBtn setTitle:@"退出账号" forState:UIControlStateNormal];
+    [exitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [exitBtn addTarget:self action:@selector(exitBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:exitBtn];
+    
+   
+    
+    
+
+}
+
+//"退出账号"的按钮事件
+- (void)exitBtnAction:(UIButton *)button {
+    [AuthenticationModel moveLoginToken];
+    [AuthenticationModel moveLoginKey];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+   
+}
+
+#pragma mark - UITableViewDataSource
+//设置分区的个数
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.dataSource.count;
+}
+
+//设置每个分区的cell
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSArray *arr = self.dataSource[section];
+    return arr.count;
+}
+
+//设置cell的样式
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.textLabel.text = self.dataSource[indexPath.section][indexPath.row];
+    cell.textLabel.font = [UIFont systemFontOfSize:kthirdTitleFont];
+    cell.textLabel.textColor = [UIColor colorWithHexString:kTitleColor];
+    //设置点击tableViewCell不会变成灰色
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    //仅在Wi-Fi下显示图片
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            //设置一个开关控件
+            UISwitch *imageSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(Width-70, 7, 60, cell.frame.size.height)];
+            [cell addSubview:imageSwitch];
+        }
+        if (indexPath.row == 1) {
+            //设置右侧文字
+            UILabel *rightL = [UILabel new];
+            rightL.textColor = [UIColor colorWithHexString:kRedColor];
+            rightL.font = [UIFont systemFontOfSize:kthirdTitleFont];
+            
+            //文本靠右边对齐
+            rightL.textAlignment = NSTextAlignmentRight;
+            [cell.contentView addSubview:rightL];
+            
+            //自动布局
+            [rightL mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(cell.contentView.mas_right).with.offset(-20);
+                make.top.equalTo(cell.contentView);
+                make.width.mas_equalTo(@(120));
+                make.height.mas_equalTo(cell.contentView.mas_height);
+            }];
+            
+            rightL.text = @"305KB";
+        }
+    } else {
+        //设置cell默认的带右箭头
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+//每个分区分区头的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.01;
+}
+
+//每个分区分区脚的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 10;
+}
+
+//每个cell的点击事件
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //系统输出选中的行号
+    NSLog(@"section = %ld   row = %ld", indexPath.section, indexPath.row);
+    
+    //清除缓存
+    if (indexPath.section == 0 && indexPath.row == 1) {
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:nil message:@"确定清除本地缓存?" preferredStyle:UIAlertControllerStyleAlert];
+        [alertC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }]];
+        [alertC addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //添加清除缓存的事件......
+        }]];
+        [self presentViewController:alertC animated:YES completion:nil];
+    }
+    
+    //意见反馈
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        SuggestionFeedbackController *suggestionFeedbackController = [[SuggestionFeedbackController alloc] init];
+        [self.navigationController pushViewController:suggestionFeedbackController animated:YES];
+    }
+    
+    //收货地址
+    if (indexPath.section == 1 && indexPath.row == 1) {
+        AddressManageController *addressManageController = [[AddressManageController alloc] init];
+        [self.navigationController pushViewController:addressManageController animated:YES];
+    }
+}
+@end

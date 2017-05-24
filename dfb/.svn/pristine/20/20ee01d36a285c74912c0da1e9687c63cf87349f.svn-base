@@ -1,0 +1,21 @@
+//
+//  UpdateSexController.h
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/10/10.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "BaseViewController.h"
+
+@interface UpdateSexController : BaseViewController
+
+@property (weak, nonatomic) IBOutlet UIButton *chooseManBtn;      //选择"男"按钮
+@property (weak, nonatomic) IBOutlet UIButton *chooseWomanBtn;    //选择"女"按钮
+@property (weak, nonatomic) IBOutlet UIButton *chooseSecrecyBtn;  //xz"保密"按钮
+
+@property (weak, nonatomic) IBOutlet UIView *chooseManView;      //选择"男"的View
+@property (weak, nonatomic) IBOutlet UIView *chooseWomanView;    //选择"女"的View
+@property (weak, nonatomic) IBOutlet UIView *chooseSecrecyView;  //选择"保密"的View
+
+@end

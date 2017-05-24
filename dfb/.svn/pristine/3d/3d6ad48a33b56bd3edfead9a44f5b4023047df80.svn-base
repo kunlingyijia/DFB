@@ -1,0 +1,24 @@
+//
+//  AddressManageCell.h
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/9/21.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface AddressManageCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *name;      //名字
+@property (weak, nonatomic) IBOutlet UILabel *phone;     //手机号1
+@property (weak, nonatomic) IBOutlet UILabel *address;   //地址
+
+@property (weak, nonatomic) IBOutlet UIButton *editBtn;      //"编辑"按钮
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;    //"删除"按钮
+
+- (IBAction)defaultAddressBtnAction:(id)sender;   //"勾选默认地址"按钮的事件
+- (IBAction)editBtnAction:(id)sender;             //"编辑"按钮的事件
+- (IBAction)deleteBtnAction:(id)sender;           //"删除"按钮的事件
+
+@end

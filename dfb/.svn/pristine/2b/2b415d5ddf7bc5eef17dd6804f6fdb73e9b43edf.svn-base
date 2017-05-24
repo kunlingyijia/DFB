@@ -1,0 +1,62 @@
+//
+//  UpdateSexController.m
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/10/10.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "UpdateSexController.h"
+
+@interface UpdateSexController ()
+
+@end
+
+@implementation UpdateSexController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self showBackBtn];
+    self.title = @"修改性别";
+    self.view.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+    
+    [self addtargetAction];
+}
+
+//为View添加点击事件
+- (void)addtargetAction {
+    //选择"男"
+    UITapGestureRecognizer *chooseManViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseManViewAction:)];
+    [self.chooseManView addGestureRecognizer:chooseManViewTap];
+    //选择"女"
+    UITapGestureRecognizer *chooseWomanViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseWomanViewAction:)];
+    [self.chooseWomanView addGestureRecognizer:chooseWomanViewTap];
+    //选择"保密"
+    UITapGestureRecognizer *chooseSecrecyViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseSecrecyViewAction:)];
+    [self.chooseSecrecyView addGestureRecognizer:chooseSecrecyViewTap];
+}
+
+//选择"男"的View事件
+- (void)chooseManViewAction:(UITapGestureRecognizer *)sender {
+    self.chooseManBtn.hidden = NO;
+    self.chooseWomanBtn.hidden = YES;
+    self.chooseSecrecyBtn.hidden = YES;
+    [self showToast:@"修改成功"];
+}
+
+//选择"女"的View事件
+- (void)chooseWomanViewAction:(UITapGestureRecognizer *)sender {
+    self.chooseWomanBtn.hidden = NO;
+    self.chooseManBtn.hidden = YES;
+    self.chooseSecrecyBtn.hidden = YES;
+    [self showToast:@"修改成功"];
+}
+
+//选择"保密"的View事件
+- (void)chooseSecrecyViewAction:(UITapGestureRecognizer *)sender {
+    self.chooseSecrecyBtn.hidden = NO;
+    self.chooseManBtn.hidden = YES;
+    self.chooseWomanBtn.hidden = YES;
+    [self showToast:@"修改成功"];
+}
+@end

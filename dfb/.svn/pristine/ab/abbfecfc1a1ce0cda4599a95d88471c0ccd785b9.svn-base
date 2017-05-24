@@ -1,0 +1,22 @@
+//
+//  ClassPageController.m
+//  DWduifubao
+//
+//  Created by kkk on 16/9/8.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "ClassPageController.h"
+
+@interface ClassPageController ()
+
+@end
+
+@implementation ClassPageController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+}
+
+@end

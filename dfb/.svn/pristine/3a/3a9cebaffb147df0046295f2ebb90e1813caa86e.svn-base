@@ -1,0 +1,13 @@
+//
+//  HomePageController.h
+//  DWduifubao
+//
+//  Created by kkk on 16/9/8.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "BaseViewController.h"
+
+@interface HomePageController : BaseViewController
+
+@end

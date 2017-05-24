@@ -1,0 +1,57 @@
+//
+//  MyPageController.h
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/9/12.
+//  Copyright © 2016年 月美 刘. All rights reserved.
+//
+
+#import "BaseViewController.h"
+
+@interface MyPageController : BaseViewController
+///滚动
+@property (weak, nonatomic) IBOutlet UIScrollView *MainScrollView;
+@property (weak, nonatomic) IBOutlet UIButton *LoginBtn;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *myPageContentSizeHeight;   //可滑动的高度
+
+@property (weak, nonatomic) IBOutlet UIButton *userPhoto;     //用户头像
+@property (weak, nonatomic) IBOutlet UILabel *userName;       //用户名
+@property (weak, nonatomic) IBOutlet UIButton *typeOfMember;  //会员类型
+
+- (IBAction)userPhotoBtnAction:(id)sender;       //“用户头像”的按钮触发事件
+- (IBAction)settingBtnAction:(id)sender;         //"设置"的按钮触发事件
+- (IBAction)messageBtnAction:(id)sender;         //"信息"的按钮触发事件
+- (IBAction)personalCenterBtnAction:(id)sender;  //"个人中心"的按钮触发事件
+
+@property (weak, nonatomic) IBOutlet UIView *myOrderBgV;       //"我的订单"的View
+@property (weak, nonatomic) IBOutlet UIView *toPayBgV;         //“待付款”的View
+@property (weak, nonatomic) IBOutlet UIView *toReceiveBgV;     //“待收货”的View
+@property (weak, nonatomic) IBOutlet UIView *toEvaluateBgV;    //“待评价”的View
+@property (weak, nonatomic) IBOutlet UIView *hasCompletedBgV;  //“已完成”的View
+
+@property (weak, nonatomic) IBOutlet UILabel *toPayMessageCount;        //“待付款”的信息个数
+@property (weak, nonatomic) IBOutlet UILabel *toReceiveMessageCount;    //“待收货”的信息个数
+@property (weak, nonatomic) IBOutlet UILabel *toEvaluateMessageCount;   //“待评价”的信息个数
+@property (weak, nonatomic) IBOutlet UILabel *HasCompletedMessageCount; //“已完成”的信息个数
+
+@property (weak, nonatomic) IBOutlet UILabel *point;          //积分
+@property (weak, nonatomic) IBOutlet UILabel *duifuGold;      //兑富金币
+@property (weak, nonatomic) IBOutlet UILabel *duifubao;       //兑富宝
+@property (weak, nonatomic) IBOutlet UILabel *negativeEquity; //负资产
+
+@property (weak, nonatomic) IBOutlet UIView *generalMemberBgV;   //“普通会员”的View
+@property (weak, nonatomic) IBOutlet UIView *SYBMemberBgV;       //“创业会员”的View
+@property (weak, nonatomic) IBOutlet UIView *memberChartBgV;     //“会员谱”的View
+@property (weak, nonatomic) IBOutlet UIButton *generalMemberMessageCount;  //“普通会员”的标识/信息个数
+@property (weak, nonatomic) IBOutlet UIButton *whetherSYBMember;           //“创业会员”的标识/信息个数
+
+@property (weak, nonatomic) IBOutlet UIView *concernedMerchandiseBgV; //“关注的商品”的View
+@property (weak, nonatomic) IBOutlet UIView *concernedStoreBgV;       //“关注的店铺”的View
+@property (weak, nonatomic) IBOutlet UIView *supplyOfMaterialBgV;     //“我要供货”的View
+@property (weak, nonatomic) IBOutlet UIView *myAgentBgV;              //“我的代理”的View
+@property (weak, nonatomic) IBOutlet UIView *O2OCollectMoneyBgV;      //“O2O收款”的View
+@property (weak, nonatomic) IBOutlet UIView *duifuSnatchGemBgV;       //“兑富夺宝”的View
+@property (weak, nonatomic) IBOutlet UIView *duifuFinanceBgV;         //“兑富金融”的View
+@property (weak, nonatomic) IBOutlet UIView *P2BAllInOneBgV;          //“网贷一体机”的View
+@end

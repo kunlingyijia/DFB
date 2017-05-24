@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="O2OFailureVC">
+            <connections>
+                <outlet property="label" destination="wrQ-zB-3MR" id="j9J-pV-yQ4"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9vF-Ip-3uH">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="审核失败" translatesAutoresizingMaskIntoConstraints="NO" id="LFE-5l-R6X">
+                            <rect key="frame" x="142" y="50" width="90" height="90"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="7bf-9E-28W"/>
+                                <constraint firstAttribute="height" constant="90" id="J0c-rm-kji"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申请失败,请重新提交.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6S-rH-fxM">
+                            <rect key="frame" x="87" y="190" width="200" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="UlZ-QX-pnt"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="错误信息:拒接" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrQ-zB-3MR">
+                            <rect key="frame" x="20" y="250" width="335" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1V-9s-L9E">
+                            <rect key="frame" x="20" y="587" width="335" height="50"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="ulb-nv-9Hf"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="重新提交">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="BtnAction:" destination="-1" eventType="touchUpInside" id="M8w-Jm-tRn"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="s1V-9s-L9E" firstAttribute="leading" secondItem="9vF-Ip-3uH" secondAttribute="leading" constant="20" id="8Sy-br-dM4"/>
+                        <constraint firstAttribute="trailing" secondItem="s1V-9s-L9E" secondAttribute="trailing" constant="20" id="DSL-qA-98H"/>
+                        <constraint firstItem="Q6S-rH-fxM" firstAttribute="centerX" secondItem="9vF-Ip-3uH" secondAttribute="centerX" id="EkG-dg-DYf"/>
+                        <constraint firstItem="wrQ-zB-3MR" firstAttribute="top" secondItem="Q6S-rH-fxM" secondAttribute="bottom" constant="20" id="F5m-7k-AT8"/>
+                        <constraint firstItem="LFE-5l-R6X" firstAttribute="centerX" secondItem="9vF-Ip-3uH" secondAttribute="centerX" id="KfA-GT-lmF"/>
+                        <constraint firstItem="Q6S-rH-fxM" firstAttribute="top" secondItem="LFE-5l-R6X" secondAttribute="bottom" constant="50" id="MIs-fz-XBy"/>
+                        <constraint firstAttribute="trailing" secondItem="wrQ-zB-3MR" secondAttribute="trailing" constant="20" id="Mhd-G3-yJh"/>
+                        <constraint firstItem="LFE-5l-R6X" firstAttribute="top" secondItem="9vF-Ip-3uH" secondAttribute="top" constant="50" id="RZy-Pe-HuR"/>
+                        <constraint firstItem="wrQ-zB-3MR" firstAttribute="leading" secondItem="9vF-Ip-3uH" secondAttribute="leading" constant="20" id="deo-Tt-fpn"/>
+                        <constraint firstItem="wrQ-zB-3MR" firstAttribute="centerX" secondItem="9vF-Ip-3uH" secondAttribute="centerX" id="vFD-og-cDP"/>
+                        <constraint firstAttribute="bottom" secondItem="s1V-9s-L9E" secondAttribute="bottom" constant="30" id="ylE-hm-ffP"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9vF-Ip-3uH" secondAttribute="bottom" id="18c-Hi-8Z0"/>
+                <constraint firstItem="9vF-Ip-3uH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QQb-nY-ARh"/>
+                <constraint firstItem="9vF-Ip-3uH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RYR-hG-pa4"/>
+                <constraint firstAttribute="trailing" secondItem="9vF-Ip-3uH" secondAttribute="trailing" id="X60-2Z-VsI"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="审核失败" width="55" height="55"/>
+    </resources>
+</document>

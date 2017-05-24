@@ -1,0 +1,121 @@
+//
+//  BaseViewController.m
+//  DWduifubao
+//
+//  Created by kkk on 16/9/8.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "BaseViewController.h"
+#import "UIView+Toast.h"
+@interface BaseViewController ()
+
+@end
+
+@implementation BaseViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)showBackBtn{
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(0, 0, 40, 40);
+    backBtn.backgroundColor = [UIColor clearColor];
+    [backBtn setImage:[UIImage imageNamed:@"夺宝-箭头-左.png"] forState:UIControlStateNormal];
+    backBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [backBtn addTarget:self action:@selector(doBack:) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 30)];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    self.navigationItem.leftBarButtonItem = backItem;
+    self.navigationController.navigationBar.translucent = NO;
+}
+
+- (void)doBack:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)popRootshowBackBtn{
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(0, 0, 40, 40);
+    backBtn.backgroundColor = [UIColor redColor];
+    [backBtn setImage:[UIImage imageNamed:@"夺宝-箭头-左"] forState:UIControlStateNormal];
+    backBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [backBtn addTarget:self action:@selector(popRootdoBack:) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 30)];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    self.navigationItem.leftBarButtonItem = backItem;
+    self.navigationController.navigationBar.translucent = NO;
+}
+
+- (void)popRootdoBack:(id)sender{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+//回收键盘
+- (void)endEditingAction:(UIView *)endView {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endtapAction:)];
+    [endView addGestureRecognizer:tap];
+}
+
+- (void)endtapAction:(UITapGestureRecognizer *)sender {
+    UIView *endV = sender.view;
+    [endV endEditing:YES];
+}
+
+- (void)showSuccessWith:(NSString *)str {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self showToast:str];
+    });
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)initWithDefaultProgressHub{
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
+    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeFlat];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+}
+
+- (void)showProgress{
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD showWithStatus:@"加载中..."];
+}
+
+- (void)showProgressWithText:(NSString *)text{
+    [SVProgressHUD showWithStatus:text];
+}
+
+- (void)hideProgress{
+    [SVProgressHUD dismiss];
+}
+
+- (void)showSucessProgress{
+    [SVProgressHUD showInfoWithStatus:@"成功！"];
+}
+
+- (void)showSucessProgressWithText:(NSString *)text{
+    [SVProgressHUD showInfoWithStatus:text];
+}
+
+- (void)showErrorProgress{
+    [SVProgressHUD showErrorWithStatus:@"失败"];
+}
+
+- (void)showErrorProgressWithText:(NSString *)text{
+    [SVProgressHUD showErrorWithStatus:text];
+}
+
+- (void)showToast:(NSString *)text{
+    [self.view hideToastActivity];
+    [self.view makeToast:text duration:1.5 position:CSToastPositionCenter];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
+@end

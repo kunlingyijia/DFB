@@ -1,0 +1,21 @@
+//
+//  LoginController.h
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/9/8.
+//  Copyright © 2016年 月美 刘. All rights reserved.
+//
+
+#import "BaseViewController.h"
+
+@interface LoginController : BaseViewController
+@property (weak, nonatomic) IBOutlet UITextField *userName;   //账号
+@property (weak, nonatomic) IBOutlet UITextField *password;   //密码
+
+- (IBAction)loginBtnClick:(id)sender;         //登录事件
+- (IBAction)registerBtnClick:(id)sender;      //注册事件
+- (IBAction)findPasswordBtnClick:(id)sender;  //找回密码事件
+
+- (IBAction)eyeBtnAction:(id)sender;  //眼睛可视事件
+
+@end

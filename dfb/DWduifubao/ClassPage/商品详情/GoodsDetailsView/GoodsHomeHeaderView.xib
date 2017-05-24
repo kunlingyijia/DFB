@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GoodsHomeHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="287"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mrz-aE-YaG">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Mrz-aE-YaG" secondAttribute="height" multiplier="5:2" id="jnN-Os-7Hx"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="乐视超级电视(live) X405 40英寸智能LED液晶电视" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwg-sG-n1T">
+                    <rect key="frame" x="20" y="160" width="335" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="兑富币" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdf-cI-n60">
+                    <rect key="frame" x="20" y="206" width="43" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R95-eu-gUC">
+                    <rect key="frame" x="68" y="202.5" width="41.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="运费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrc-kX-JJy">
+                    <rect key="frame" x="285.5" y="206" width="29" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXL-xy-hRd">
+                    <rect key="frame" x="319.5" y="206" width="35.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Wrc-kX-JJy" firstAttribute="bottom" secondItem="R95-eu-gUC" secondAttribute="bottom" id="6nV-Nh-2b9"/>
+                <constraint firstItem="R95-eu-gUC" firstAttribute="bottom" secondItem="rdf-cI-n60" secondAttribute="bottom" id="8LB-Bb-2dA"/>
+                <constraint firstItem="nwg-sG-n1T" firstAttribute="top" secondItem="Mrz-aE-YaG" secondAttribute="bottom" constant="10" id="8VA-hx-2Fo"/>
+                <constraint firstItem="Mrz-aE-YaG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BdF-x6-DRU"/>
+                <constraint firstItem="lXL-xy-hRd" firstAttribute="bottom" secondItem="R95-eu-gUC" secondAttribute="bottom" id="Bpi-G1-AIM"/>
+                <constraint firstItem="Mrz-aE-YaG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Gwo-CI-gNX"/>
+                <constraint firstItem="rdf-cI-n60" firstAttribute="top" secondItem="nwg-sG-n1T" secondAttribute="bottom" constant="10" id="NOw-h2-Pk5"/>
+                <constraint firstAttribute="trailing" secondItem="Mrz-aE-YaG" secondAttribute="trailing" id="QW1-gN-1uV"/>
+                <constraint firstItem="lXL-xy-hRd" firstAttribute="leading" secondItem="Wrc-kX-JJy" secondAttribute="trailing" constant="5" id="UyH-QA-vGk"/>
+                <constraint firstItem="rdf-cI-n60" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="WXH-BG-7I0"/>
+                <constraint firstItem="R95-eu-gUC" firstAttribute="leading" secondItem="rdf-cI-n60" secondAttribute="trailing" constant="5" id="d2x-jr-Z1J"/>
+                <constraint firstAttribute="trailing" secondItem="nwg-sG-n1T" secondAttribute="trailing" constant="20" id="eVl-80-Ftw"/>
+                <constraint firstAttribute="trailing" secondItem="lXL-xy-hRd" secondAttribute="trailing" constant="20" id="eaS-U6-pDP"/>
+                <constraint firstItem="nwg-sG-n1T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="rZM-qO-nXV"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="57.5" y="-99.5"/>
+        </view>
+    </objects>
+</document>

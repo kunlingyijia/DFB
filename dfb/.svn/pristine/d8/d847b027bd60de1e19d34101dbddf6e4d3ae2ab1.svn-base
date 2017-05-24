@@ -1,0 +1,35 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "c2561b72-44ec-e049-b7ad-b9e7ac9c92c2++8251",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "c2561b72-44ec-e049-b7ad-b9e7ac9c92c2++6203" : {
+
+    },
+    "c2561b72-44ec-e049-b7ad-b9e7ac9c92c2++8251" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "c2561b72-44ec-e049-b7ad-b9e7ac9c92c2++6203" : 0,
+    "c2561b72-44ec-e049-b7ad-b9e7ac9c92c2++8251" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BBC54607-BDC6-4808-8D68-8F16828FCF2C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "c2561b72-44ec-e049-b7ad-b9e7ac9c92c2++6203" : "DWduifubao22222\/",
+    "c2561b72-44ec-e049-b7ad-b9e7ac9c92c2++8251" : "DWDuifubao222\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DWduifubao",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DWduifubao.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/192.168.1.210\/svn\/O2O",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "c2561b72-44ec-e049-b7ad-b9e7ac9c92c2++6203"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/192.168.1.210\/svn\/O2O",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "c2561b72-44ec-e049-b7ad-b9e7ac9c92c2++8251"
+    }
+  ]
+}

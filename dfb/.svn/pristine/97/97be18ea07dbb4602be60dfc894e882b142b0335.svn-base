@@ -1,0 +1,58 @@
+//
+//  DW-Prefix.pch
+//  DWduifubao
+//
+//  Created by kkk on 16/9/8.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#ifndef DW_Prefix_pch
+#define DW_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
+#import "DWCommonParm.h"
+#import "BaseNavigationController.h"
+#import "DWTabBarController.h"
+#import "Masonry.h"
+#import "SDCycleScrollView.h"
+#import "UIColor+DWColor.h"
+#import "NSString+DWString.h"
+#import "UIButton+LXMImagePosition.h"
+#import "DWHelper.h"
+#import "AFNetworking.h"
+#import "BaseRequest.h"
+#import "BaseResponse.h"
+#import "YYModel.h"
+#import "SVProgressHUD.h"
+#import "AuthenticationModel.h"
+#import "AESCrypt.h"
+#import "MJRefresh.h"
+
+//屏幕尺寸
+#define Bounds [UIScreen mainScreen].bounds
+#define Width [UIScreen mainScreen].bounds.size.width
+#define Height [UIScreen mainScreen].bounds.size.height
+
+//色值
+#define kRedColor @"#f23030"                    //主色调(红)
+#define kViewBackgroundColor @"#f5f5f5"         //View块的背景色(灰)
+#define kViewLayerColor @"#dddddd"              //View块的边框色(灰)
+#define kPlaceholderColor @"#cccccc"            //提示文字的颜色(灰)
+#define ksubTitleColor @"#888888"               //二级字体颜色
+#define kLineColor @"#cbcbcb"                   //线条颜色(灰)
+#define kTitleColor @"#333333"        //导航框标题的颜色(黑)
+#define kblueColor @"##1c62b9"        //蓝色
+
+//字体大小
+#define kFirstTitleFont 18
+#define ksecondTitleFont 16
+#define kthirdTitleFont 14
+
+#define kServerUrl @"http://dfb.dongwuit.com/?"
+
+#endif /* DW_Prefix_pch */

@@ -1,0 +1,26 @@
+//
+//  DWHelper.h
+//  DWduifubao
+//
+//  Created by kkk on 16/9/12.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface DWHelper : NSObject
+//设置网络请求成功 失败的bolck
+typedef void(^SuccessCallback)(id response);
+typedef void(^FaildCallback)(id error);
+//枚举 请求类型
+typedef enum : NSUInteger {
+    POST,
+    GET,
+    PUT,
+}RequestMethod;
+
++ (id)shareHelper;
+//网络请求
+- (void)requestDataWithParm:(id)parm act:(NSString *)actName sign:(id)sign requestMethod:(RequestMethod)method success:(SuccessCallback)success faild:(FaildCallback)faild;
++ (NSMutableArray *)getCityData;
+@end

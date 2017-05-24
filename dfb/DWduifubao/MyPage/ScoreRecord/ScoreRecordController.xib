@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScoreRecordController">
+            <connections>
+                <outlet property="JiFenSegmented" destination="2H7-lF-ckb" id="bgq-aJ-lwq"/>
+                <outlet property="score" destination="tvR-31-XVC" id="E6f-2D-SPF"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2H7-lF-ckb">
+                    <rect key="frame" x="10" y="10" width="355" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="cao-Mr-d7i"/>
+                    </constraints>
+                    <segments>
+                        <segment title="全部"/>
+                        <segment title="收入"/>
+                        <segment title="支出"/>
+                    </segments>
+                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="JifenAction:" destination="-1" eventType="valueChanged" id="gFC-BE-Q9B"/>
+                    </connections>
+                </segmentedControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6R-1L-LRJ">
+                    <rect key="frame" x="0.0" y="40" width="375" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvR-31-XVC">
+                            <rect key="frame" x="345" y="0.0" width="10" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总积分:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3HY-Gj-QRI">
+                            <rect key="frame" x="285" y="0.0" width="60" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="HFD-TL-jcS"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="tvR-31-XVC" secondAttribute="bottom" id="BGM-h5-Rf8"/>
+                        <constraint firstItem="3HY-Gj-QRI" firstAttribute="top" secondItem="O6R-1L-LRJ" secondAttribute="top" id="RIa-t5-WpZ"/>
+                        <constraint firstAttribute="bottom" secondItem="3HY-Gj-QRI" secondAttribute="bottom" id="bU0-Z6-1qK"/>
+                        <constraint firstItem="tvR-31-XVC" firstAttribute="leading" secondItem="3HY-Gj-QRI" secondAttribute="trailing" id="c31-oX-f2y"/>
+                        <constraint firstAttribute="height" constant="40" id="iWt-oe-76J"/>
+                        <constraint firstAttribute="trailing" secondItem="tvR-31-XVC" secondAttribute="trailing" constant="20" id="k2b-p0-UiT"/>
+                        <constraint firstItem="tvR-31-XVC" firstAttribute="top" secondItem="O6R-1L-LRJ" secondAttribute="top" id="sSH-re-RME"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2H7-lF-ckb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="5Du-2q-Dxb"/>
+                <constraint firstAttribute="trailing" secondItem="2H7-lF-ckb" secondAttribute="trailing" constant="10" id="Loy-hb-1V0"/>
+                <constraint firstItem="O6R-1L-LRJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="USo-XH-y8s"/>
+                <constraint firstItem="2H7-lF-ckb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="d4c-o7-IzY"/>
+                <constraint firstItem="O6R-1L-LRJ" firstAttribute="top" secondItem="2H7-lF-ckb" secondAttribute="bottom" id="laN-Nd-zwQ"/>
+                <constraint firstAttribute="trailing" secondItem="O6R-1L-LRJ" secondAttribute="trailing" id="xS6-ta-nza"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

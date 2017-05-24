@@ -1,0 +1,62 @@
+//
+//  SuggestionFeedbackController.m
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/9/21.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "SuggestionFeedbackController.h"
+#import "RequestFeedback.h"
+
+@interface SuggestionFeedbackController ()
+@property (nonatomic, strong) UITextView *contentView;   //意见编辑框
+@end
+
+@implementation SuggestionFeedbackController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self showBackBtn];
+    self.title = @"意见反馈";
+    self.view.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+    
+    [self initWithCumstomView];
+}
+
+- (void)initWithCumstomView{
+    UIView *feedBackView = [[UIView alloc] initWithFrame:CGRectMake(20, 20, Width - 40, 160)];
+    feedBackView.layer.borderWidth = 0.3;
+    feedBackView.layer.borderColor = [UIColor colorWithHexString:kViewBackgroundColor].CGColor;
+    feedBackView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:feedBackView];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.contentView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, feedBackView.frame.size.width, 160)];
+    self.contentView.textColor = [UIColor colorWithHexString:kTitleColor];
+    self.contentView.font = [UIFont systemFontOfSize:ksecondTitleFont];
+    [feedBackView addSubview:self.contentView];
+    
+    //设置反馈的按钮
+    UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [sendBtn setBackgroundColor:[UIColor colorWithHexString:kRedColor]];
+    sendBtn.frame = CGRectMake(20, 230, Width - 40, 44);
+    [sendBtn setTitle:@"发送" forState:UIControlStateNormal];
+    [sendBtn addTarget:self action:@selector(sendBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:sendBtn];
+}
+
+//"发送"的按钮事件
+- (void)sendBtnAction:(UIButton *)sender {
+    if (self.contentView.text.length == 0) {
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"提示" message:@"反馈内容不能为空" preferredStyle:UIAlertControllerStyleAlert];
+        [alertC addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alertC animated:YES completion:nil];
+    }else {
+        RequestFeedback *feedback = [[RequestFeedback alloc] init];
+        feedback.content = self.contentView.text;
+        
+        //调接口......
+    }
+}
+@end

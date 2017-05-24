@@ -1,0 +1,32 @@
+//
+//  SetPayPasswordController.m
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/10/13.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "SetPayPasswordController.h"
+
+@interface SetPayPasswordController ()
+
+@end
+
+@implementation SetPayPasswordController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self showBackBtn];
+    self.title = @"设置支付密码";
+    self.view.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+    
+}
+
+//"获取验证码"的按钮事件
+- (IBAction)getVerificationCodeBtnAction:(id)sender {
+}
+
+//"确定"的按钮事件
+- (IBAction)confirmBtnAction:(id)sender {
+}
+@end

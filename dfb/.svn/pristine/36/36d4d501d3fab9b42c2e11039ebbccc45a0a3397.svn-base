@@ -1,0 +1,62 @@
+//
+//  RealNameCertificationController.m
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/10/11.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "RealNameCertificationController.h"
+
+@interface RealNameCertificationController ()
+
+@end
+
+@implementation RealNameCertificationController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self showBackBtn];
+    self.title = @"实名认证";
+    self.view.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+    self.contentSizeHeight.constant = 650;
+    
+    [self addtargetAction];
+}
+
+//为View添加点击事件
+- (void)addtargetAction {
+    //上传"身份证正面"
+    UITapGestureRecognizer *identityCardFacadeViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(identityCardFacadeViewAction:)];
+    [self.identityCardFacade addGestureRecognizer:identityCardFacadeViewTap];
+    //上传"身份证反面"
+    UITapGestureRecognizer *identityCardBackViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(identityCardBackViewAction:)];
+    [self.identityCardBack addGestureRecognizer:identityCardBackViewTap];
+    //上传"银行卡正面"
+    UITapGestureRecognizer *bankCardFacadeViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bankCardFacadeViewAction:)];
+    [self.bankCardFacade addGestureRecognizer:bankCardFacadeViewTap];
+    //上传"手持身份证＋银行卡"
+    UITapGestureRecognizer *identityAndBankCardViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(identityAndBankCardViewAction:)];
+    [self.identityAndBankCard addGestureRecognizer:identityAndBankCardViewTap];
+}
+
+//上传"身份证正面"的View事件
+- (void)identityCardFacadeViewAction:(UITapGestureRecognizer *)sender {
+    [self showToast:@"请上传身份证正面照片"];
+}
+
+//上传"身份证反面"的View事件
+- (void)identityCardBackViewAction:(UITapGestureRecognizer *)sender {
+    [self showToast:@"请上传身份证反面照片"];
+}
+
+//上传"银行卡正面"的View事件
+- (void)bankCardFacadeViewAction:(UITapGestureRecognizer *)sender {
+    [self showToast:@"请上传银行卡正面照片"];
+}
+
+//上传"手持身份证＋银行卡"的View事件
+- (void)identityAndBankCardViewAction:(UITapGestureRecognizer *)sender {
+    [self showToast:@"请上传手持身份证＋银行卡照片"];
+}
+@end

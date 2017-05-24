@@ -1,0 +1,88 @@
+//
+//  LoginController.m
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/9/8.
+//  Copyright © 2016年 月美 刘. All rights reserved.
+//
+
+#import "LoginController.h"
+#import "RegisterController.h"
+#import "FindPasswordController.h"
+#import "RequestLogin.h"
+#import "MyPageController.h"
+@interface LoginController ()
+
+@end
+
+@implementation LoginController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self showBackBtn];
+    self.title = @"兑富宝登录";
+    self.view.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+}
+
+//登录事件
+- (IBAction)loginBtnClick:(id)sender {
+    RequestLogin *login = [[RequestLogin alloc] init];
+    login.mobile = self.userName.text;
+    login.password = self.password.text;
+    
+    BaseRequest *baseReq = [[BaseRequest alloc] init];
+    baseReq.token = [AuthenticationModel getLoginToken];
+    baseReq.encryptionType = RequestMD5;
+    baseReq.data = login;
+    
+    [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:@"act=Api/User/requestLogin" sign:[[baseReq.data yy_modelToJSONString] MD5Hash] requestMethod:GET success:^(id response) {
+        BaseResponse *baseRes = [BaseResponse yy_modelWithJSON:response];
+        NSLog(@"%@", response);
+        if (baseRes.resultCode == 1) {
+            NSDictionary *dic = baseRes.data;
+            NSUserDefaults *userDefau = [NSUserDefaults standardUserDefaults];
+            [userDefau setObject:dic[@"key"] forKey:@"loginKey"];
+            [userDefau setObject:dic[@"token"] forKey:@"loginToken"];
+            
+            //登录成功,界面跳转至"我的"界面
+//            MyPageController *myPageController = [[MyPageController alloc] initWithNibName:@"MyPageController" bundle:nil];
+//            [self.navigationController pushViewController:myPageController animated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            
+        }else {
+            [self showToast:@"账号或密码错误"];
+            //        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"提示" message:@"账号或密码错误！" preferredStyle:UIAlertControllerStyleAlert];
+            //        [alertC addAction:[UIAlertAction actionWithTitle:@"重新输入" style:UIAlertActionStyleDefault handler:nil]];
+            //        [self presentViewController:alertC animated:YES completion:nil];
+        }
+    } faild:^(id error) {
+        NSLog(@"%@", error);
+    }];
+    
+}
+
+//注册事件
+- (IBAction)registerBtnClick:(id)sender {
+    RegisterController *registerController = [[RegisterController alloc] initWithNibName:@"RegisterController" bundle:nil];
+    [self.navigationController pushViewController:registerController animated:YES];
+}
+
+//找回密码事件
+- (IBAction)findPasswordBtnClick:(id)sender {
+    FindPasswordController *findPasswordController = [[FindPasswordController alloc] initWithNibName:@"FindPasswordController" bundle:nil];
+    [self.navigationController pushViewController:findPasswordController animated:YES];
+}
+
+//眼睛事件
+- (IBAction)eyeBtnAction:(id)sender {
+    UIButton *btn = sender;
+    if (btn.selected) {
+        self.password.secureTextEntry = YES;
+        btn.selected = NO;
+    }else {
+        self.password.secureTextEntry = NO;
+        btn.selected = YES;
+    }
+}
+@end

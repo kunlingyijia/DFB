@@ -1,0 +1,60 @@
+//
+//  SecurityCertificateController.m
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/10/12.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "SecurityCertificateController.h"
+#import "FindPasswordController.h"
+#import "UpdatePhoneController.h"
+#import "SetPayPasswordController.h"
+
+@interface SecurityCertificateController ()
+
+@end
+
+@implementation SecurityCertificateController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self showBackBtn];
+    self.title = @"安全验证中心";
+    self.view.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+    
+    [self addtargetAction];
+}
+
+//为View添加点击事件
+- (void)addtargetAction {
+    //"登录密码"
+    UITapGestureRecognizer *loginPasswordViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginPasswordViewAction:)];
+    [self.loginPasswordView addGestureRecognizer:loginPasswordViewTap];
+    //"手机验证"
+    UITapGestureRecognizer *phoneVerificationViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(phoneVerificationViewAction:)];
+    [self.phoneVerificationView addGestureRecognizer:phoneVerificationViewTap];
+    //"设置支付密码"
+    UITapGestureRecognizer *setPayPasswordViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setPayPasswordViewAction:)];
+    [self.setPayPasswordView addGestureRecognizer:setPayPasswordViewTap];
+}
+
+//"登录密码"的View事件
+- (void)loginPasswordViewAction:(UITapGestureRecognizer *)sender {
+    FindPasswordController *findPasswordController = [[FindPasswordController alloc] initWithNibName:@"FindPasswordController" bundle:nil];
+    [self.navigationController pushViewController:findPasswordController animated:YES];
+}
+
+//"手机验证"的View事件
+- (void)phoneVerificationViewAction:(UITapGestureRecognizer *)sender {
+    UpdatePhoneController *updatePhoneController = [[UpdatePhoneController alloc] initWithNibName:@"UpdatePhoneController" bundle:nil];
+    [self.navigationController pushViewController:updatePhoneController animated:YES];
+}
+
+//"设置支付密码"的View事件
+- (void)setPayPasswordViewAction:(UITapGestureRecognizer *)sender {
+    SetPayPasswordController *setPayPasswordController = [[SetPayPasswordController alloc] initWithNibName:@"SetPayPasswordController" bundle:nil];
+    [self.navigationController pushViewController:setPayPasswordController animated:YES];
+}
+
+@end

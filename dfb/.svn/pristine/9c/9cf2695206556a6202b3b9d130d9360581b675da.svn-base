@@ -1,0 +1,21 @@
+//
+//  PersonalCenterController.h
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/10/11.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "BaseViewController.h"
+@class PersonModel ;
+
+@interface PersonalCenterController : BaseViewController
+
+//属性传值
+///PerSonModel
+@property (nonatomic, strong) PersonModel *personModel ;
+
+
+
+
+@end

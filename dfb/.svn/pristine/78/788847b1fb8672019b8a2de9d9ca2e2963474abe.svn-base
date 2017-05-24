@@ -1,0 +1,32 @@
+//
+//  UpdatePhoneController.m
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/10/13.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "UpdatePhoneController.h"
+
+@interface UpdatePhoneController ()
+
+@end
+
+@implementation UpdatePhoneController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self showBackBtn];
+    self.title = @"修改手机号";
+    self.view.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+    
+}
+
+//"获取验证码"的按钮事件
+- (IBAction)getVerificationCodeBtnAction:(id)sender {
+}
+
+//"更换"的按钮事件
+- (IBAction)updateBtnAction:(id)sender {
+}
+@end

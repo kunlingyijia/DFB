@@ -1,0 +1,22 @@
+//
+//  FindPasswordController.h
+//  DWduifubao
+//
+//  Created by 月美 刘 on 16/9/12.
+//  Copyright © 2016年 月美 刘. All rights reserved.
+//
+
+#import "BaseViewController.h"
+
+@interface FindPasswordController : BaseViewController
+
+@property (weak, nonatomic) IBOutlet UITextField *userName;          //账号
+@property (weak, nonatomic) IBOutlet UITextField *verificationCode;  //验证码
+@property (weak, nonatomic) IBOutlet UITextField *resetPassword;     //重设密码(新密码)
+///userName是否可点击
+@property (nonatomic, strong) NSString  *userNameType ;
+
+
+- (IBAction)getVerificationCodeBtnAction:(id)sender;  //"获取验证码"的事件
+
+@end

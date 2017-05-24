@@ -1,0 +1,19 @@
+//
+//  CALayer+LayerColor.m
+//  DWduifubao
+//
+//  Created by kkk on 16/9/18.
+//  Copyright © 2016年 bianming. All rights reserved.
+//
+
+#import "CALayer+LayerColor.h"
+
+@implementation CALayer (LayerColor)
+
+- (void)setBorderColorFromUIColor:(UIColor *)color
+{
+    self.masksToBounds = YES;
+    self.borderColor = color.CGColor;
+}
+
+@end

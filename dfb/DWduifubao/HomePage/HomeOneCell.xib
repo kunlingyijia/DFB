@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeOneCell">
+            <rect key="frame" x="0.0" y="0.0" width="369" height="506"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="369" height="506"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIk-tp-8Jk">
+                        <rect key="frame" x="0.0" y="0.0" width="369" height="366"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JUw-kz-RN8">
+                        <rect key="frame" x="0.0" y="366" width="369" height="70"/>
+                        <subviews>
+                            <button opaque="NO" tag="300" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EpI-CU-nK6">
+                                <rect key="frame" x="0.0" y="0.0" width="92.5" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="我的资产" image="首页-我的资产图标">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="Action:" destination="gTV-IL-0wX" eventType="touchUpInside" id="SAv-oZ-NIr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="301" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rb3-Gq-k81">
+                                <rect key="frame" x="92.5" y="0.0" width="92" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="我要收款" image="020收款">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="Action:" destination="gTV-IL-0wX" eventType="touchUpInside" id="c7Q-De-ytd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="302" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pl0-0b-BZR">
+                                <rect key="frame" x="184.5" y="0.0" width="92.5" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="我的服务" image="我的服务">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="Action:" destination="gTV-IL-0wX" eventType="touchUpInside" id="4iJ-Df-os2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="303" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGn-cu-jwO">
+                                <rect key="frame" x="277" y="0.0" width="92" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="我要开店" image="我要开店">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="Action:" destination="gTV-IL-0wX" eventType="touchUpInside" id="QdI-Pg-Jsu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="EpI-CU-nK6" secondAttribute="bottom" id="3pc-Vm-dWo"/>
+                            <constraint firstAttribute="bottom" secondItem="pl0-0b-BZR" secondAttribute="bottom" id="5ps-dt-ERv"/>
+                            <constraint firstItem="rb3-Gq-k81" firstAttribute="top" secondItem="JUw-kz-RN8" secondAttribute="top" id="6S7-24-J1O"/>
+                            <constraint firstItem="rb3-Gq-k81" firstAttribute="width" secondItem="EpI-CU-nK6" secondAttribute="width" id="8If-ND-cyf"/>
+                            <constraint firstItem="yGn-cu-jwO" firstAttribute="leading" secondItem="pl0-0b-BZR" secondAttribute="trailing" id="DwZ-3d-Mmb"/>
+                            <constraint firstItem="pl0-0b-BZR" firstAttribute="width" secondItem="EpI-CU-nK6" secondAttribute="width" id="KbI-Kn-T5D"/>
+                            <constraint firstItem="yGn-cu-jwO" firstAttribute="width" secondItem="EpI-CU-nK6" secondAttribute="width" id="Kxq-qQ-JHh"/>
+                            <constraint firstItem="rb3-Gq-k81" firstAttribute="height" secondItem="EpI-CU-nK6" secondAttribute="height" id="Pci-pd-Vxv"/>
+                            <constraint firstAttribute="height" constant="70" id="RBw-Xw-pyR"/>
+                            <constraint firstItem="EpI-CU-nK6" firstAttribute="leading" secondItem="JUw-kz-RN8" secondAttribute="leading" id="RZ0-PB-uUk"/>
+                            <constraint firstItem="yGn-cu-jwO" firstAttribute="top" secondItem="JUw-kz-RN8" secondAttribute="top" id="YpB-X9-K3l"/>
+                            <constraint firstItem="pl0-0b-BZR" firstAttribute="top" secondItem="JUw-kz-RN8" secondAttribute="top" id="ZAa-nT-v6g"/>
+                            <constraint firstItem="yGn-cu-jwO" firstAttribute="height" secondItem="EpI-CU-nK6" secondAttribute="height" id="afP-Dk-1zR"/>
+                            <constraint firstItem="pl0-0b-BZR" firstAttribute="height" secondItem="EpI-CU-nK6" secondAttribute="height" id="kBP-f2-yed"/>
+                            <constraint firstAttribute="trailing" secondItem="yGn-cu-jwO" secondAttribute="trailing" id="l83-pT-spm"/>
+                            <constraint firstItem="rb3-Gq-k81" firstAttribute="leading" secondItem="EpI-CU-nK6" secondAttribute="trailing" id="lLx-wC-6Qx"/>
+                            <constraint firstItem="pl0-0b-BZR" firstAttribute="leading" secondItem="rb3-Gq-k81" secondAttribute="trailing" id="qrS-er-rLO"/>
+                            <constraint firstAttribute="bottom" secondItem="yGn-cu-jwO" secondAttribute="bottom" id="rPc-WB-b35"/>
+                            <constraint firstAttribute="bottom" secondItem="rb3-Gq-k81" secondAttribute="bottom" id="vW5-tA-UAp"/>
+                            <constraint firstItem="EpI-CU-nK6" firstAttribute="top" secondItem="JUw-kz-RN8" secondAttribute="top" id="xBt-4g-DwR"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <real key="value" value="0.29999999999999999"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                <color key="value" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfi-Eb-9cO">
+                        <rect key="frame" x="0.0" y="436" width="369" height="70"/>
+                        <subviews>
+                            <button opaque="NO" tag="304" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2XJ-OE-8BY">
+                                <rect key="frame" x="0.0" y="0.0" width="92.5" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="我要办卡" image="我要办卡">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="Action:" destination="gTV-IL-0wX" eventType="touchUpInside" id="xzr-S0-GWA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="305" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOo-fW-r5j">
+                                <rect key="frame" x="92.5" y="0.0" width="92" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="我要贷款" image="我要贷款">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="Action:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Kjs-ha-TQc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="306" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltl-nQ-T1f">
+                                <rect key="frame" x="184.5" y="0.0" width="92.5" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="我的推荐" image="我的推荐">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="Action:" destination="gTV-IL-0wX" eventType="touchUpInside" id="8Tn-zU-yZt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="307" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDn-cU-w3Y">
+                                <rect key="frame" x="277" y="0.0" width="92" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="我的财富" image="我的财富">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="Action:" destination="gTV-IL-0wX" eventType="touchUpInside" id="C3Y-DP-hqK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SOo-fW-r5j" firstAttribute="top" secondItem="cfi-Eb-9cO" secondAttribute="top" id="6Po-QM-aKD"/>
+                            <constraint firstItem="ltl-nQ-T1f" firstAttribute="leading" secondItem="SOo-fW-r5j" secondAttribute="trailing" id="6qk-5n-ha3"/>
+                            <constraint firstItem="ltl-nQ-T1f" firstAttribute="top" secondItem="cfi-Eb-9cO" secondAttribute="top" id="8RB-hm-2mc"/>
+                            <constraint firstAttribute="trailing" secondItem="eDn-cU-w3Y" secondAttribute="trailing" id="9d7-jc-bCD"/>
+                            <constraint firstItem="eDn-cU-w3Y" firstAttribute="top" secondItem="cfi-Eb-9cO" secondAttribute="top" id="IgC-gn-DL3"/>
+                            <constraint firstAttribute="bottom" secondItem="2XJ-OE-8BY" secondAttribute="bottom" id="LuS-ND-wLQ"/>
+                            <constraint firstItem="2XJ-OE-8BY" firstAttribute="top" secondItem="cfi-Eb-9cO" secondAttribute="top" id="NSE-Lv-pF1"/>
+                            <constraint firstAttribute="height" constant="70" id="Qkg-sQ-8zV"/>
+                            <constraint firstItem="ltl-nQ-T1f" firstAttribute="width" secondItem="2XJ-OE-8BY" secondAttribute="width" id="XFh-hE-EXv"/>
+                            <constraint firstItem="ltl-nQ-T1f" firstAttribute="height" secondItem="2XJ-OE-8BY" secondAttribute="height" id="dTd-5S-76O"/>
+                            <constraint firstItem="SOo-fW-r5j" firstAttribute="width" secondItem="2XJ-OE-8BY" secondAttribute="width" id="hRR-rR-phj"/>
+                            <constraint firstAttribute="bottom" secondItem="SOo-fW-r5j" secondAttribute="bottom" id="jZ9-HR-DSn"/>
+                            <constraint firstAttribute="bottom" secondItem="ltl-nQ-T1f" secondAttribute="bottom" id="ki8-rY-h3Z"/>
+                            <constraint firstItem="2XJ-OE-8BY" firstAttribute="leading" secondItem="cfi-Eb-9cO" secondAttribute="leading" id="ktZ-Dk-L0p"/>
+                            <constraint firstItem="eDn-cU-w3Y" firstAttribute="leading" secondItem="ltl-nQ-T1f" secondAttribute="trailing" id="pK3-cC-oGn"/>
+                            <constraint firstAttribute="bottom" secondItem="eDn-cU-w3Y" secondAttribute="bottom" id="qfn-hE-qv7"/>
+                            <constraint firstItem="SOo-fW-r5j" firstAttribute="height" secondItem="2XJ-OE-8BY" secondAttribute="height" id="uXg-tc-dLF"/>
+                            <constraint firstItem="SOo-fW-r5j" firstAttribute="leading" secondItem="2XJ-OE-8BY" secondAttribute="trailing" id="w1Z-Cc-tP4"/>
+                            <constraint firstItem="eDn-cU-w3Y" firstAttribute="width" secondItem="2XJ-OE-8BY" secondAttribute="width" id="xYO-AW-Z47"/>
+                            <constraint firstItem="eDn-cU-w3Y" firstAttribute="height" secondItem="2XJ-OE-8BY" secondAttribute="height" id="yaf-I6-rZx"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="JUw-kz-RN8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7YZ-04-Yfh"/>
+                <constraint firstAttribute="bottom" secondItem="cfi-Eb-9cO" secondAttribute="bottom" id="Ngv-Gu-7Zg"/>
+                <constraint firstItem="cfi-Eb-9cO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="PGq-vu-fS6"/>
+                <constraint firstItem="bIk-tp-8Jk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="S1j-X7-fgf"/>
+                <constraint firstItem="cfi-Eb-9cO" firstAttribute="top" secondItem="JUw-kz-RN8" secondAttribute="bottom" id="Syb-dF-WEC"/>
+                <constraint firstAttribute="trailing" secondItem="JUw-kz-RN8" secondAttribute="trailing" id="U9D-bQ-6of"/>
+                <constraint firstAttribute="trailing" secondItem="bIk-tp-8Jk" secondAttribute="trailing" id="XKW-uP-PAX"/>
+                <constraint firstAttribute="trailing" secondItem="cfi-Eb-9cO" secondAttribute="trailing" id="ZaT-un-SP2"/>
+                <constraint firstItem="bIk-tp-8Jk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kzQ-a7-esv"/>
+                <constraint firstItem="JUw-kz-RN8" firstAttribute="top" secondItem="bIk-tp-8Jk" secondAttribute="bottom" id="p5U-pY-eQL"/>
+            </constraints>
+            <size key="customSize" width="369" height="506"/>
+            <connections>
+                <outlet property="EightBtn" destination="eDn-cU-w3Y" id="0a3-be-EEd"/>
+                <outlet property="FiveBtn" destination="2XJ-OE-8BY" id="b3w-O0-6XJ"/>
+                <outlet property="O2OCollectMoneyBtn" destination="rb3-Gq-k81" id="vr8-JN-Aja"/>
+                <outlet property="SevenBtn" destination="ltl-nQ-T1f" id="21S-fv-Apz"/>
+                <outlet property="SixBtn" destination="SOo-fW-r5j" id="GXx-PD-Q8z"/>
+                <outlet property="dfFinanceBtn" destination="pl0-0b-BZR" id="sqQ-90-BEo"/>
+                <outlet property="dfSnatchGemBtn" destination="yGn-cu-jwO" id="uMV-n4-lhz"/>
+                <outlet property="myPropertyBtn" destination="EpI-CU-nK6" id="dsw-y0-VL4"/>
+            </connections>
+            <point key="canvasLocation" x="217.5" y="306"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="020收款" width="58" height="36"/>
+        <image name="我的推荐" width="58" height="36"/>
+        <image name="我的服务" width="58" height="36"/>
+        <image name="我的财富" width="58" height="36"/>
+        <image name="我要办卡" width="58" height="36"/>
+        <image name="我要开店" width="58" height="36"/>
+        <image name="我要贷款" width="58" height="36"/>
+        <image name="首页-我的资产图标" width="58" height="36"/>
+    </resources>
+</document>

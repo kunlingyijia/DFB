@@ -1,0 +1,4 @@
+pod 'Masonry'
+pod 'SDCycleScrollView','~> 1.64'
+pod 'LXMButtonImagePosition', '~> 1.1.1'
+pod'AFNetworking','~>3.1.0'
