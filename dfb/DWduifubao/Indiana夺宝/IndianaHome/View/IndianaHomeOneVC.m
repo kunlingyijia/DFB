@@ -77,9 +77,10 @@
             
             CATransition*tran = [CATransition animation];
             
-            tran.type=kCATransitionFade;
-            
-            tran.subtype=kCATransitionFromBottom;
+            //tran.type=kCATransitionFade;
+            //配置过度动画类型
+            tran.type = @"cube";
+            tran.subtype=kCATransitionFromTop;
             
             [self.label.layer addAnimation:tran forKey:@"trans"];
             if (self.dataArray.count==0) {

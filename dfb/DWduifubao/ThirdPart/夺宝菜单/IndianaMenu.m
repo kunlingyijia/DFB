@@ -85,7 +85,6 @@
                             [weakSelf TableViewIsOpen:NO];
                         }
                         weakSelf.IndianaMenuBlock(tag,IsUp);
-                        
                     };
              return cell;
         }else{
