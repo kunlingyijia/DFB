@@ -124,13 +124,10 @@
 #define IMG_Name(imgName)        [UIImage imageNamed:(imgName)]
 #define IMG_ImgWidth(img)        ((img).size.width)
 #define IMG_ImgHeight(img)       ((img).size.height)
-////外网
+//////外网
 //#define kServerUrl @"https://api.zgduifubao.com/?"
 //#define GDKey @"1d86e5860559ec6cbb1391ce853bd3f2"
-
-
-
-//////内网
+////内网
 #define kServerUrl @"http://dfb.dongwuit.com/?"
 #define GDKey @"9fad225d5991e4b6399bb5e80fc67e79"
 

@@ -1019,7 +1019,6 @@ typedef void(^PushOhter)();
             NSString *newbuildStr;
             if (model.version.length>6) {
                 newbuildStr =[model.version substringFromIndex:6];
-                
             }
             int newbuild = [newbuildStr intValue];
             NSLog(@"NewOne----%d\nNewTwo----%d\nNewThree----%d\nnewbuild----%d ",newOne ,newTwo,newThree,newbuild);

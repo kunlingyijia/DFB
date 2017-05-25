@@ -14,7 +14,6 @@
 @property(nonatomic,strong)    SDCycleScrollView *cycleScrollViewImage;
 @property(nonatomic,strong)  SDCycleScrollView * cycleScrollViewText;
 @property(nonatomic,strong)IndianaMenu *indianaMenu;
-
 @property(nonatomic,strong)SGAdvertScrollView *SGAdvertScrollViewImage;
 ///数据
 @property (nonatomic,strong)NSMutableArray * dataArray;
@@ -22,7 +21,6 @@
 
 @end
 @implementation IndianaHomeOneVC
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.contentView.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
@@ -32,7 +30,7 @@
     [self.ThreeBtn setImagePosition:LXMImagePositionTop spacing:2];
     [self.FourBtn setImagePosition:LXMImagePositionTop spacing:2];
     self.dataArray = [NSMutableArray arrayWithCapacity:0];
-     [self createView];
+    [self createView];
 }
 - (void)createView {
     // 网络加载图片的轮播器
@@ -41,7 +39,6 @@
         self. cycleScrollViewImage.autoScrollTimeInterval =3.0;
         [self.ShufflingImgView addSubview:  _cycleScrollViewImage];
     }
-
     // 轮播文字
     if (!_cycleScrollViewText) {
         self. cycleScrollViewText = [SDCycleScrollView   cycleScrollViewWithFrame:CGRectMake(42, 0, Width-42, Width*0.1-5) delegate:self placeholderImage:nil];

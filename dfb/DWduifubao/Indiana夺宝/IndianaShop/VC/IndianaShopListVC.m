@@ -31,7 +31,6 @@
 #pragma mark - 视图已在屏幕上渲染完成
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
 }
 #pragma mark -  载入完成
 - (void)viewDidLoad {
@@ -40,19 +39,15 @@
     [self SET_UI];
     //关于数据
     [self  SET_DATA];
-    
 }
 #pragma mark - 关于UI
 -(void)SET_UI{
     self.title = self.ClassModel.category_name;
     [self showBackBtn];
     [self setUpTableView];
-    
 }
 #pragma mark - 关于tableView
 -(void)setUpTableView{
-    
-  
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, Width*0.11+30, Width, Height-64-Width*0.1-30) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -61,24 +56,21 @@
     [self.view addSubview:_tableView];
     [_tableView tableViewregisterClassArray:@[@"UITableViewCell"]];
     [_tableView tableViewregisterNibArray:@[@"IndianaShopListOneCell"]];
-
     if (!_indianaMenu) {
         self.indianaMenu = [[IndianaMenu alloc]initWithFrame:CGRectMake(0, 30, Width, Width*0.11) IsClass:YES ClassArr:self.ClassArr ClassOneBtntitle:self.title];
             [self.view addSubview:_indianaMenu];
         __weak typeof(self) weakSelf = self;
         _indianaMenu.IndianaMenuBlock=^(NSInteger tag,NSString * IsUp){
-            
             //type 1-人气 2-最新 3-进度 4-总需递增 5-总需递减
-            
+            weakSelf
+            .pageIndex = 1;
             switch (tag) {
-                    
                 case 1:
                 {
                     weakSelf.type = @"1";
                     [weakSelf requestAction];
                     break;
                 }
-                    
                 case 2:
                 {
                     weakSelf.type = @"2";
@@ -102,30 +94,22 @@
                         [weakSelf requestAction];
                         //从高到低
                     }
-                    
-                    
-                    
                     break;
                 }
                 default:{
-                    
                     break;
-                    
                 }
             }
-       
-    
-            
         };
         _indianaMenu.IndianaClassMenuBlock=^(NSInteger tag){
             weakSelf.title = ((IndianaShopClassModel*)weakSelf.ClassArr[tag]).category_name;
             weakSelf.category_id =((IndianaShopClassModel*)weakSelf.ClassArr[tag]).category_id;
              weakSelf.type = @"1";
+            weakSelf
+            .pageIndex = 1;
             [weakSelf requestAction];
-
         };
     }
-
 }
 #pragma mark - 关于数据
 -(void)SET_DATA{
@@ -133,7 +117,6 @@
     self.pageIndex =1;
     self.category_id = self.ClassModel.category_id;
     self.type = @"1";
-    
     [self requestAction];
     //上拉刷新下拉加载
     [self Refresh];
@@ -167,7 +150,8 @@
          baseReq.encryptionType = RequestMD5;
          baseReq.data =dic;
          [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:Request_DbGoodsList sign:[[baseReq.data yy_modelToJSONString] MD5Hash] requestMethod:GET PushVC:self success:^(id response) {
-             BaseResponse *baseRes = [BaseResponse yy_modelWithJSON:response];          if (weakself.pageIndex == 1) {
+             BaseResponse *baseRes = [BaseResponse yy_modelWithJSON:response];
+             if (weakself.pageIndex == 1) {
                  [weakself.dataArray removeAllObjects];
              }
             if (baseRes.resultCode ==1) {

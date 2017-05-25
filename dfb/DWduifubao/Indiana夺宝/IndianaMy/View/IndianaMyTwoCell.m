@@ -16,17 +16,18 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     //Cell背景颜色
-    self.contentView.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+    //self.contentView.backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
     //cell选中时的颜色 无色
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     //Cell右侧箭头
     //self.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     //self.separatorInset = UIEdgeInsetsMake(0, Width, 0, 0); // ViewWidth  [宏] 指的是手机屏幕的宽度
-    [_avatar_url.layer setLaberMasksToBounds:YES cornerRadius:3 borderWidth:0 borderColor:nil];
+    
 }
 -(void)setModel:(IndianaUserSunModel *)model{
     if (!model) return;
     _model = model;
+    [_avatar_url.layer setLaberMasksToBounds:YES cornerRadius:_avatar_url.frame.size.width/2.0 borderWidth:0 borderColor:nil];
     [_avatar_url SD_WebimageUrlStr:model.avatar_url placeholderImage:@"图层-15-拷贝-2"];
     _nick_name.text = model.nick_name;
     _create_time.text  = model.create_time;

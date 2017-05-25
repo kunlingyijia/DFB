@@ -13,15 +13,12 @@
 @property(nonatomic,assign) int remaining;
 @end
 @implementation IndianaShopDetailsThreeCell
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self. historyBtn setImagePosition:LXMImagePositionRight spacing:3];
-
     //Cell背景颜色
     self.AddAndDelView.layer.cornerRadius= 3.0;
     self.AddAndDelView.layer.masksToBounds = YES;
@@ -35,15 +32,12 @@
     //self.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     self.separatorInset = UIEdgeInsetsMake(0, Width, 0, 0); // ViewWidth  [宏] 指的是手机屏幕的宽度
     self.remaining =0;
-
 }
 - (IBAction)deleteACtion:(PublicBtn *)sender {
     int a=  [self.textTf.text intValue];
-    
     if ([self.textTf.text intValue]>1) {
         a--;
         self.textTf.text = [NSString stringWithFormat:@"%d",a];
-        
     }
     self. IndianaShopDetailsNumberCellBlock(self.textTf.text);
 }
@@ -57,7 +51,6 @@
         self.textTf.text=[NSString stringWithFormat:@"%d",self.remaining];
         [DWToastTool showToast:[NSString stringWithFormat:@"仅剩余%d人次",self.remaining]];
     }
-
     self. IndianaShopDetailsNumberCellBlock(self.textTf.text);
 }
 - (IBAction)TFChangeACtion:(PublicTF *)sender {
@@ -75,12 +68,10 @@
 
 
 - (IBAction)BtnAction:(UIButton *)sender {
-    
     self.IndianaShopDetailsThreeCellBlock(sender.tag-510);
 }
 -(void)setModel:(IndianaShopModel *)model{
     if (!model) return;
-    
     _model = model;
     self.remaining = [model.counts intValue]-[model.players intValue];
     _start_time.text = [NSString stringWithFormat:@"%@开始",model.start_time ];

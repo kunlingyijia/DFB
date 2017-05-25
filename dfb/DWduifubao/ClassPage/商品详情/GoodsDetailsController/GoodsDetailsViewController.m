@@ -14,6 +14,8 @@
 @property(nonatomic,strong)GoodsModel *gModel;
 ///数据
 @property (nonatomic,strong)NSMutableArray * dataArray;
+@property(nonatomic,strong)UIButton * btn;
+
 @end
 
 @implementation GoodsDetailsViewController
@@ -53,7 +55,45 @@
 #pragma mark - 关于UI
 -(void)SET_UI{
     
+    [_webview.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
 }
+/**
+ *  监听属性值发生改变时回调
+ */
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"contentOffset"])
+    {        CGFloat y = _webview.scrollView.contentOffset.y;
+        NSLog(@"%lf",y);
+        if (y>Height*1.2) {
+            if (!_btn) {
+                self.btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+                _btn.frame = CGRectMake(Width-Width*0.12-15, Height-Width*0.5, Width*0.12, Width*0.12);
+                [_btn setImage:[UIImage imageNamed:@"向上返回箭头"] forState:(0)];
+                _btn.contentMode =UIViewContentModeScaleAspectFill;
+                _btn .backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+                [_btn.layer setLaberMasksToBounds:YES cornerRadius:Width*0.06 borderWidth:0.3 borderColor:[UIColor grayColor]];
+                [_btn addTarget:self action:@selector(UpTo) forControlEvents:(UIControlEventTouchUpInside)];
+                [self.view addSubview:self.btn];
+            }
+        }else{
+            if (_btn) {
+                [_btn removeFromSuperview];
+                _btn = nil;
+            }
+        }
+        
+    }
+}
+-(void)UpTo{
+    
+    if ([_webview subviews]) {
+        UIScrollView* scrollView = [[_webview subviews] objectAtIndex:0];
+        [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    }
+    
+}
+
 #pragma mark - 关于数据
 -(void)SET_DATA{
     
@@ -221,6 +261,8 @@
 
 - (void)dealloc
 {  [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.webview.scrollView removeObserver:self forKeyPath:@"contentOffset"];
+
     NSLog(@"%@销毁了", [self class]);
 }
 @end

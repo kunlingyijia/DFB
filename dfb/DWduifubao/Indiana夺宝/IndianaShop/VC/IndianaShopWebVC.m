@@ -14,6 +14,10 @@
 @property (strong, nonatomic)  UIWebView *webview;
 ///数据
 @property (nonatomic,strong)NSMutableArray * dataArray;
+
+@property(nonatomic,strong)UIButton * btn;
+
+
 @end
 
 @implementation IndianaShopWebVC
@@ -48,9 +52,45 @@
     [[LoadWaitSingle shareManager]showLoadWaitViewImage:@"兑富宝加载等待图"];
     self.webview = [[UIWebView alloc]initWithFrame:self.view.frame];
     self.webview.delegate = self;
+   [_webview.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     [self.view addSubview:_webview];
+}
+/**
+ *  监听属性值发生改变时回调
+ */
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"contentOffset"])
+    {        CGFloat y = _webview.scrollView.contentOffset.y;
+        NSLog(@"%lf",y);
+        if (y>Height*1.2) {
+            if (!_btn) {
+                self.btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+                _btn.frame = CGRectMake(Width-Width*0.12-15, Height-Width*0.5, Width*0.12, Width*0.12);
+                [_btn setImage:[UIImage imageNamed:@"向上返回箭头"] forState:(0)];
+                _btn.contentMode =UIViewContentModeScaleAspectFill;
+                _btn .backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+                [_btn.layer setLaberMasksToBounds:YES cornerRadius:Width*0.06 borderWidth:0.3 borderColor:[UIColor grayColor]];
+                [_btn addTarget:self action:@selector(UpTo) forControlEvents:(UIControlEventTouchUpInside)];
+                [self.view addSubview:self.btn];            }
+        }else{
+            if (_btn) {
+                [_btn removeFromSuperview];
+                _btn = nil;
+            }
+        }
+         
+    }
+}
+-(void)UpTo{
+    
+    if ([_webview subviews]) {
+   UIScrollView* scrollView = [[_webview subviews] objectAtIndex:0];
+        [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    }
     
 }
+
 #pragma mark - 关于数据
 -(void)SET_DATA{
     [self.webview loadHTMLString:self.goods_content baseURL:nil];
@@ -109,7 +149,6 @@
         [self.dataArray removeLastObject];
     }
     //urlResurlt 就是获取到得所有图片的url的拼接；mUrlArray就是所有Url的数组
-    
     //添加图片可点击js
     [webView stringByEvaluatingJavaScriptFromString:@"function registerImageClickAction(){\
      var imgs=document.getElementsByTagName('img');\
@@ -132,9 +171,7 @@
         NSLog(@"%@",path);
         path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"%@",path);
-        
         int index =0;
-        
         for (int i=0; i<self.dataArray.count; i++) {
             if ([path isEqualToString:self.dataArray[i]]) {
                 index =i;
@@ -142,10 +179,8 @@
         }
         PhotoViewController *photoVC = [[PhotoViewController alloc] init];
         photoVC.urlArray = self.dataArray;
-        //    SDCollectionViewCell * Cell=[cycleScrollView.mainView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
         photoVC.imgFrame = self.view.frame;
         photoVC.index = index;
-        //photoVC.frameArray = [_frameArray copy];
         photoVC.imgData = [self getImageDataWithUrl:[self.dataArray objectAtIndex:index]];
         
         //[self presentViewController:photoVC animated:NO completion:nil];
@@ -153,14 +188,11 @@
         photoVC.indexBlock = ^(NSInteger index){
             
             
-            //[cycleScrollView ImageContentOffset:CGPointMake(index*Width,0)];
             
         };
         
         [photoVC setCompletedBlock:^(void){
-            //        [_coverView removeFromSuperview];
-            //        _coverView = nil;
-        }];
+                 }];
         
         
         
@@ -194,6 +226,9 @@
      [SVProgressHUD showErrorWithStatus:@"网络无法连接"];
      [[LoadWaitSingle shareManager] hideLoadWaitView];
 }
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -201,6 +236,7 @@
 
 - (void)dealloc
 {  [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.webview.scrollView removeObserver:self forKeyPath:@"contentOffset"];
     NSLog(@"%@销毁了", [self class]);
 }
 @end

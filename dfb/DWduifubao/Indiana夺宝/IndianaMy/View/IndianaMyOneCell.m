@@ -44,7 +44,7 @@
     [_goods_image SD_WebimageUrlStr:model.goods_image placeholderImage:nil];
     _goods_name.text = model.goods_name;
     // cell 其他配置
-    NSString * countsAndtimes_no =[NSString stringWithFormat:@"总需:        %@人次\n期号:        第%@期",_model.counts,_model.times_no];
+    NSString * countsAndtimes_no =[NSString stringWithFormat:@"总需人次: %@人次\n期        号: 第%@期",_model.counts,_model.times_no];
     NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString: countsAndtimes_no] ;
     NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle1 setLineSpacing:5];
@@ -55,13 +55,13 @@
     
     
     if ([model.status isEqualToString:@"2"]) {
-        NSString * nick_nameAndluck_no =[NSString stringWithFormat:@"获奖者:    %@\n幸运号:    %@",_model.nick_name,_model.luck_no];
+        NSString * nick_nameAndluck_no =[NSString stringWithFormat:@"获  奖  者: %@\n幸运号码: %@",_model.nick_name,_model.luck_no];
         NSMutableAttributedString * attributedString2 = [[NSMutableAttributedString alloc] initWithString: nick_nameAndluck_no] ;
         [attributedString2 addAttribute:NSForegroundColorAttributeName
          
                                   value:[UIColor blueColor]
          
-                                  range:NSMakeRange(8, _model.nick_name.length)];
+                                  range:NSMakeRange(9, _model.nick_name.length)];
         [attributedString2 addAttribute:NSForegroundColorAttributeName
          
                                   value:[UIColor redColor]
@@ -75,7 +75,7 @@
        _nick_nameAndluck_no.attributedText  =[[NSMutableAttributedString alloc] init] ;
     }
     NSString *open_time =_model.open_time.length ==0 ? @"--:--:--" :_model.open_time;
-    NSString * numberAndopen_time =[NSString stringWithFormat:@"本期参与: %@\n揭晓时间: %@",_model.number,open_time ];
+    NSString * numberAndopen_time =[NSString stringWithFormat:@"本期参与: %@份\n揭晓时间: %@",_model.number,open_time ];
     NSMutableAttributedString * attributedString3 = [[NSMutableAttributedString alloc] initWithString: numberAndopen_time];
     [attributedString3 addAttribute:NSForegroundColorAttributeName
      
