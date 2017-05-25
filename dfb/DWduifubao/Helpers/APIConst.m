@@ -215,4 +215,5 @@ NSString * const  Request_TimesRecord = @"/Db/requestTimesRecord";
 
 ///8.14 幸运号码列表
 NSString * const  Request_DbLuckNoList = @"/Db/requestLuckNoList";
-
+///8.15 当期订单列表（计算结果）
+NSString * const  Request_DbOrderCalList = @"/Db/requestOrderCalList";

@@ -28,7 +28,7 @@
     if (!model) return;
     _model = model;
     _create_time.text = model.create_time;
-    _luck_no.text = model.luck_no;
+    _time_stamp.text = model.time_stamp;
     _nick_name.text = model.nick_name;
 
 }

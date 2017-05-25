@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ViewHeightConstraint;
 
 @property (weak, nonatomic) IBOutlet UILabel *luck_no;
+@property (strong, nonatomic)  UITextView *computing_result;
 
 
 @end
@@ -54,11 +55,10 @@
     [self showBackBtn];
     ;
     [self setUpTableView];
-    
 }
 #pragma mark - 关于tableView
 -(void)setUpTableView{
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, Width/9, Width, Height-64-Width*0.45-Width/9) style:(UITableViewStylePlain)];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, Width/9, Width, Height-64-Width*0.35-Width/9) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = [UIColor clearColor];
@@ -66,26 +66,24 @@
     [self.view addSubview:_tableView];
     [_tableView tableViewregisterClassArray:@[@"UITableViewCell"]];
     [_tableView tableViewregisterNibArray:@[@"CalculationDetailsOneCell"]];
-    
+    self. computing_result = [[UITextView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(self.tableView.frame)+5, Width-20, Width*0.35-40)];
+    self.  computing_result.textColor = [UIColor whiteColor];
+    self.  computing_result.backgroundColor = [UIColor clearColor];
+    self.  computing_result.editable = NO;
+    self.  computing_result.font = [UIFont systemFontOfSize:14];
+    self.computing_result.text = self.lasttimeModel.computing_result;
+    [self.view addSubview:self.computing_result];
 }
 #pragma mark - 关于数据
 -(void)SET_DATA{
     self.dataArray = [NSMutableArray arrayWithCapacity:0];
-    [self.dataArray addObject:@""];
-    [self.dataArray addObject:@""];
-    [self.dataArray addObject:@""];
-    [self.dataArray addObject:@""];
-    [self.dataArray addObject:@""];
-    [self.dataArray addObject:@""];
-    [self.dataArray addObject:@""];
-    [self.dataArray addObject:@""];
-    [self.dataArray addObject:@""];
     self.pageIndex =1;
-//    [self requestAction];
-//    //上拉刷新下拉加载
-//    [self Refresh];
+    [self requestAction];
+    //上拉刷新下拉加载
+    [self Refresh];
     NSLog(@"%@",[self.lasttimeModel yy_modelToJSONObject]);
-    self.luck_no.text = [NSString stringWithFormat:@"  最终结果: %@  ",self.lasttimeModel.luck_no];
+     self.luck_no.text = [NSString stringWithFormat:@"  最终结果: %@  ",self.lasttimeModel.luck_no];
+   
 }
 -(void)Refresh{
     //下拉刷新
@@ -108,14 +106,14 @@
     }];
     
 }
-#pragma mark - 网络请求
+#pragma mark - 8.15 当期订单列表（计算结果）
 -(void)requestAction{
-    NSMutableDictionary *dic  =[ @{@"pageIndex":@(self.pageIndex),@"pageCount":@(10)}mutableCopy];
+    NSMutableDictionary *dic  =[ @{@"pageIndex":@(self.pageIndex),@"pageCount":@(10),@"times_id":(NSString*)self.lasttimeModel.times_id}mutableCopy];
     __weak typeof(self) weakself = self;
          BaseRequest *baseReq = [[BaseRequest alloc] init];
          baseReq.encryptionType = RequestMD5;
          baseReq.data =dic;
-         [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:@"act=Api/Homepage/requestHomepage" sign:[[baseReq.data yy_modelToJSONString] MD5Hash] requestMethod:GET PushVC:self success:^(id response) {
+         [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:Request_DbOrderCalList sign:[[baseReq.data yy_modelToJSONString] MD5Hash] requestMethod:GET PushVC:self success:^(id response) {
 
             BaseResponse *baseRes = [BaseResponse yy_modelWithJSON:response];            if (weakself.pageIndex == 1) {
                 [weakself.dataArray removeAllObjects];
@@ -157,7 +155,7 @@
     }else{
         CalculationDetailsOneCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CalculationDetailsOneCell" forIndexPath:indexPath];
                 //cell 赋值
-        //cell.model = indexPath.row >= self.dataArray.count ? nil :self.dataArray[indexPath.row];
+        cell.model = indexPath.row >= self.dataArray.count ? nil :self.dataArray[indexPath.row];
                 // cell 其他配置
         return cell;
         

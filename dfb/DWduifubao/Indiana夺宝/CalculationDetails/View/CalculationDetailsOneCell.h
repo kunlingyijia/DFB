@@ -11,7 +11,7 @@
 @interface CalculationDetailsOneCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *create_time;
-@property (weak, nonatomic) IBOutlet UILabel *luck_no;
+@property (weak, nonatomic) IBOutlet UILabel *time_stamp;
 
 @property (weak, nonatomic) IBOutlet UILabel *nick_name;
 

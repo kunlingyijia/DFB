@@ -61,10 +61,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bre-N3-xJl">
-                    <rect key="frame" x="0.0" y="498.5" width="375" height="168.5"/>
+                    <rect key="frame" x="0.0" y="536" width="375" height="131"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 最终结果: ??? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmT-5Q-biq">
-                            <rect key="frame" x="15" y="140.5" width="81.5" height="18"/>
+                            <rect key="frame" x="15" y="103" width="81.5" height="18"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="18" id="NrT-5r-GOn"/>
@@ -79,23 +79,11 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tac-N3-f9c">
-                            <rect key="frame" x="10" y="5" width="355" height="130.5"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <string key="text">计算结果: \n1、在中国古代文学中，散文与韵文、骈文相对，不追求押韵和句式的工整。这是广义上的散文。\n2、在中国现代文学中，散文指与诗歌、小说、戏剧并行的一种文学体裁。这是狭义上的散文。\n3、所谓优美，就是指散文的语言清新明丽(也美丽)，生动活泼，富于音乐感，行文如涓涓流水，叮咚有声，如娓娓而谈，情真意切。所谓凝练，是说散文的语言简洁质朴，自然流畅，寥寥数语就可以描绘出生动的形象，勾勒出动人的场景，显示出深远的意境。散文力求写景如在眼前，写情沁人心脾。</string>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="nmT-5Q-biq" firstAttribute="top" secondItem="tac-N3-f9c" secondAttribute="bottom" constant="5" id="2pW-3T-tyj"/>
-                        <constraint firstItem="tac-N3-f9c" firstAttribute="leading" secondItem="bre-N3-xJl" secondAttribute="leading" constant="10" id="9Bs-cw-c3c"/>
-                        <constraint firstAttribute="trailing" secondItem="tac-N3-f9c" secondAttribute="trailing" constant="10" id="Kyg-G7-Ihc"/>
-                        <constraint firstItem="tac-N3-f9c" firstAttribute="top" secondItem="bre-N3-xJl" secondAttribute="top" constant="5" id="T9c-Is-thp"/>
                         <constraint firstAttribute="bottom" secondItem="nmT-5Q-biq" secondAttribute="bottom" constant="10" id="iGp-5g-fPI"/>
-                        <constraint firstAttribute="width" secondItem="bre-N3-xJl" secondAttribute="height" multiplier="10:4.5" id="iaH-Gd-xTi"/>
+                        <constraint firstAttribute="width" secondItem="bre-N3-xJl" secondAttribute="height" multiplier="10:3.5" id="iaH-Gd-xTi"/>
                         <constraint firstItem="nmT-5Q-biq" firstAttribute="leading" secondItem="bre-N3-xJl" secondAttribute="leading" constant="15" id="xdX-9E-9T0"/>
                     </constraints>
                 </view>

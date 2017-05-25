@@ -25,6 +25,9 @@
 ///参与分数
 @property (nonatomic, strong) NSString  *number ;
 
+///[上期揭晓]计算详情
+@property (nonatomic, strong) NSString  *computing_result ;
+
 
 
 

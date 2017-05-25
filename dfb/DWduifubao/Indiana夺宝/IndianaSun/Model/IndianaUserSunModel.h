@@ -63,10 +63,15 @@
 
 ///用户id
 @property (nonatomic, strong) NSString  *win_user_id	 ;
-
-
-
 @property (nonatomic,assign)CGFloat  CellHeight;
+
+///时间因子
+@property (nonatomic, strong) NSString  *time_stamp ;
+
+
+
+
+
 
 
 

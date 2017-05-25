@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="479" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="479" height="79"/>
+                <rect key="frame" x="0.0" y="0.0" width="479" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-09-10 23:59:59" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOA-ct-jeR">
@@ -54,8 +54,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="create_time" destination="gOA-ct-jeR" id="kOl-Xg-Xsn"/>
-                <outlet property="luck_no" destination="KC6-BP-ksy" id="c3p-hk-Ypp"/>
                 <outlet property="nick_name" destination="0cE-ft-M9v" id="MbZ-ZF-cjR"/>
+                <outlet property="time_stamp" destination="KC6-BP-ksy" id="v5B-5e-UQ2"/>
             </connections>
             <point key="canvasLocation" x="113.5" y="113"/>
         </tableViewCell>

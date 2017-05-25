@@ -211,3 +211,5 @@ extern NSString * const  Request_DbMyCommentList;
 
 ///8.14 幸运号码列表
 extern NSString * const  Request_DbLuckNoList;
+///8.15 当期订单列表（计算结果）
+extern NSString * const  Request_DbOrderCalList;
