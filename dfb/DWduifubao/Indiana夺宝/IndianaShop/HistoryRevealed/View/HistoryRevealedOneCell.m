@@ -32,7 +32,7 @@
     _open_time.text = [NSString stringWithFormat:@"揭晓时间:%@",model.open_time];
      _name.text = [NSString stringWithFormat:@"幸运用户:%@",model.name];
     _luck_no.text = [NSString stringWithFormat:@"幸运号码:%@",model.luck_no];
-    _number.text = [NSString stringWithFormat:@"参与人次:%@",model.number];
+    _number.text = [NSString stringWithFormat:@"参与人次:%@份",model.number];
    
     
 }
