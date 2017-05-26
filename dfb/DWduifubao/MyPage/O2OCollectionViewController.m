@@ -30,8 +30,9 @@
     [super viewDidLoad];
     self.title = @"收款列表";
     [self showBackBtn];
+  
     __weak typeof(self) weakSelf = self;
-    [self ShowRightBtnTitle:@"收款说明" Back:^{
+    [self ShowRightBtnTitle:@"注意事项" Back:^{
         ArticleVC * VC = [[ArticleVC alloc]initWithNibName:@"ArticleVC" bundle:nil];
         //4-注册协议 5-权益说明 7-O2O收款说明
         VC.type = @"7";

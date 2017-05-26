@@ -43,7 +43,7 @@
    //添加 --权益说明标题
 
     __weak typeof(self) weakSelf = self;
-    [self ShowRightBtnTitle:@"权益说明" Back:^{
+    [self ShowRightBtnTitle:@"注意事项" Back:^{
         //4-注册协议 5-权益说明 7-O2O收款说明
         
         ArticleVC * VC = [[ArticleVC alloc]initWithNibName:@"ArticleVC" bundle:nil];
