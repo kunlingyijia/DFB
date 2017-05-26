@@ -78,7 +78,7 @@
 }
 #pragma mark - 关于数据
 -(void)SET_DATA{
-    
+    //我的天啊不会用了
     self.allNumber = @"1";
     //总计赋值
     [self  AllNmuber ];
