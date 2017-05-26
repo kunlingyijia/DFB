@@ -36,6 +36,7 @@
 #pragma mark -  视图将出现在屏幕之前
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+  ///我这是在测试
 }
 #pragma mark - 视图已在屏幕上渲染完成
 -(void)viewDidAppear:(BOOL)animated{
@@ -157,7 +158,7 @@
             //刷新
             [weakself.tableView reloadData];
             [weakself HiddenNodataView];
-            if ([self.ShopModel.status isEqualToString:@"1"]) {
+            if ([weakself.ShopModel.status isEqualToString:@"1"]) {
                 weakself.submitBtn.userInteractionEnabled = YES;
                 weakself.submitBtn.backgroundColor = [UIColor orangeColor];
                 
@@ -216,7 +217,7 @@
                         cell.IndianaShopDetailsTwoCellBlock=^(NSInteger tag){
                             //Push 跳转
                             CalculationDetailsVC * VC = [[CalculationDetailsVC alloc]initWithNibName:@"CalculationDetailsVC" bundle:nil];
-                            VC.lasttimeModel = self.lasttimeModel;
+                            VC.lasttimeModel = weakSelf.lasttimeModel;
                             //                        VC.CalculationDetailsVCBlock = ^(){
                             //                            weakSelf.pageIndex =1;
                             //                            [weakSelf requestGoodsInfo];

@@ -82,7 +82,7 @@ typedef void(^PushOhter)();
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
-    NSLog(@"NSHomeDirectory()--%@",NSHomeDirectory());
+   // NSLog(@"NSHomeDirectory()--%@",NSHomeDirectory());
     
 
     

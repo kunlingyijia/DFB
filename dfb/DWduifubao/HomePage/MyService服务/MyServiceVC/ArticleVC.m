@@ -14,9 +14,7 @@
 ///数据
 @property (nonatomic,strong)NSMutableArray * dataArray;
 @property(nonatomic,strong)UIButton * btn;
-
 @end
-
 @implementation ArticleVC
 -(NSMutableArray *)dataArray{
     if (!_dataArray) {
@@ -164,8 +162,6 @@
     [webView stringByEvaluatingJavaScriptFromString:smallImagesJS];
     [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
      */
- 
-    
     NSString *js=@"var script = document.createElement('script');"
     "script.type = 'text/javascript';"
     "script.text = \"function ResizeImages() { "
@@ -181,7 +177,7 @@
     "}\";"
     "document.getElementsByTagName('head')[0].appendChild(script);";
     
-    js=[NSString stringWithFormat:js,Width,Width];
+    js=[NSString stringWithFormat:js,Width,Width-15];
     [webView stringByEvaluatingJavaScriptFromString:js];
     [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
     
