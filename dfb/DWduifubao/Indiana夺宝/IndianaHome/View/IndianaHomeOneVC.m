@@ -68,7 +68,7 @@
         self. label = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, Width-40, Width*0.1-5)];
         __block   NSInteger  count = 0;
         self.label.font = [UIFont systemFontOfSize:12];
-        self.label.tintColor = [UIColor grayColor];
+        self.label.tintColor = [UIColor lightGrayColor];
         self.label.numberOfLines = 2;
         [NSTimer scheduledTimerWithTimeInterval:3 repeats:YES block:^(NSTimer*_Nonnulltimer) {
             
@@ -152,7 +152,7 @@
                     NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"恭喜 %@ %@获得%@",model.name,model.time_before,model.goods_name]];
                             [AttributedStr addAttribute:NSFontAttributeName
     
-                                                  value:[UIFont systemFontOfSize:13]
+                                                  value:[UIFont systemFontOfSize:12]
     
                                                   range:NSMakeRange(3, model.name.length+1)];
     
