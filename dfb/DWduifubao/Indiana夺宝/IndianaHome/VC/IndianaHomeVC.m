@@ -40,11 +40,17 @@
     [super viewDidLoad];
     
     ////刷新一元购首页
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestBannerBornList) name:@"RefreshIndianaHomeVC" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestBannerBorn) name:@"RefreshIndianaHomeVC" object:nil];
         //UI
     [self SET_UI];
     //数据
     [self  SET_DATA];
+    
+}
+////刷新一元购首页
+-(void)requestBannerBorn{
+    [self.collectionView.mj_header beginRefreshing];
+    
     
 }
 #pragma mark - 关于UI
@@ -312,11 +318,13 @@
 #pragma mark - ///人气-最新-进度-点击事件
 -(void)IndianaHomeOneCellMenuBlockTag:(NSInteger)tag IsUp:(NSString*)isUp{
     //type 1-人气 2-最新 3-进度 4-总需递增 5-总需递减
+     self.pageIndex = 1;
      switch (tag) {
             
         case 1:
         {
              self.type = @"1";
+           
             [self requestAction];
             break;
         }
@@ -335,12 +343,14 @@
         }
         case 4:
         {
+            //type 1-人气 2-最新 3-进度 4-总需递增 5-总需递减
             if ([isUp isEqualToString:@"0"]) {
-                  self.type = @"4";
+                  self.type = @"5";
                   [self requestAction];
+          
                 //从低到高
             }else if ([isUp isEqualToString:@"1"]){
-                  self.type = @"5";
+                  self.type = @"4";
                  [self requestAction];
                 //从高到低
             }
@@ -379,9 +389,7 @@
             return CGSizeMake(Width,Height - Width*0.811+2-64);
   
         }
-        
-
-    }
+}
     
 }
 //设置每个cell上下左右相距

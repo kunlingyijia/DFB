@@ -62,9 +62,6 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvr-fB-0A8">
                                 <rect key="frame" x="100" y="10" width="30" height="30"/>
-                                <state key="normal">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
                                 <connections>
                                     <action selector="CallAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="s6u-mr-Bfx"/>
                                 </connections>

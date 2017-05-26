@@ -146,10 +146,7 @@
 }
 ///喇叭赋值
 -(void)cellGetDataWithWin:(NSMutableArray*)arr{
-    
-    
     [self.dataArray removeAllObjects];
-            NSMutableArray *banner_imageArr = [NSMutableArray arrayWithCapacity:0];
             for (IndianaHomeModel * model in arr) {
     
                     NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"恭喜 %@ %@获得%@",model.name,model.time_before,model.goods_name]];
@@ -161,7 +158,7 @@
     
                             [AttributedStr addAttribute:NSForegroundColorAttributeName
     
-                                                  value:[UIColor blueColor]
+                                                  value:[UIColor colorWithHexString:@"#1757ae"]
     
                                                   range:NSMakeRange(3, model.name.length+1)];
     

@@ -25,6 +25,10 @@
     //Cell右侧箭头
     //self.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     self.separatorInset = UIEdgeInsetsMake(0, Width, 0, 0); // ViewWidth  [宏] 指的是手机屏幕的宽度
+    [self.avatar_url.layer setLaberMasksToBounds:YES cornerRadius:(Width*2/5)*0.3/2.0 borderWidth:0 borderColor:nil];
+   
+    
+    
 }
 - (IBAction)submitBtn:(UIButton *)sender {
     self.IndianaShopDetailsTwoCellBlock(sender.tag-890);
@@ -32,7 +36,7 @@
 
 -(void)setModel:(last_timeModel *)model{
     if (!model) return;
-    [self.avatar_url.layer setLaberMasksToBounds:YES cornerRadius:self.avatar_url.bounds.size.height/2 borderWidth:0 borderColor:nil];
+
     _model = model;
     _win_name.text = model.win_name;
     _luck_no.text =[NSString stringWithFormat:@"幸运号码:%@", model.luck_no];
@@ -40,5 +44,6 @@
     _number.text =[NSString stringWithFormat:@"%@份", model.number];
     _open_time.text = model.open_time;
     [self.avatar_url SD_WebimageUrlStr:model.avatar_url placeholderImage:@"图层-15-拷贝-2"];
+    
 }
 @end

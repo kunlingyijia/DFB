@@ -45,7 +45,7 @@
                           value:[UIFont systemFontOfSize:13]
                           range:NSMakeRange(3, str.length)];
     [AttributedStr addAttribute:NSForegroundColorAttributeName
-                          value:[UIColor blueColor]
+                          value:[UIColor colorWithHexString:@"#1757ae"]
                           range:NSMakeRange(3, str.length)];
     _players.attributedText = AttributedStr;
     self.progressV.progress =[_model.schedule floatValue]/100 ;

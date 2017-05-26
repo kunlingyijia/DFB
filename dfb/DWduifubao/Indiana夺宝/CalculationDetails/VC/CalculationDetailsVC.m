@@ -71,7 +71,7 @@
     self.  computing_result.backgroundColor = [UIColor clearColor];
     self.  computing_result.editable = NO;
     self.  computing_result.font = [UIFont systemFontOfSize:14];
-    self.computing_result.text = self.lasttimeModel.computing_result;
+    [self.  computing_result   setSelectable:NO];
     [self.view addSubview:self.computing_result];
 }
 #pragma mark - 关于数据
@@ -83,6 +83,7 @@
     [self Refresh];
     NSLog(@"%@",[self.lasttimeModel yy_modelToJSONObject]);
      self.luck_no.text = [NSString stringWithFormat:@"  最终结果: %@  ",self.lasttimeModel.luck_no];
+     self.computing_result.text = self.lasttimeModel.computing_result;
    
 }
 -(void)Refresh{

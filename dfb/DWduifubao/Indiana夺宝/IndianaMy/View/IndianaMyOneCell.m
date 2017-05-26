@@ -59,7 +59,7 @@
         NSMutableAttributedString * attributedString2 = [[NSMutableAttributedString alloc] initWithString: nick_nameAndluck_no] ;
         [attributedString2 addAttribute:NSForegroundColorAttributeName
          
-                                  value:[UIColor blueColor]
+                                  value:[UIColor colorWithHexString:@"#1757ae"]
          
                                   range:NSMakeRange(9, _model.nick_name.length)];
         [attributedString2 addAttribute:NSForegroundColorAttributeName
@@ -103,7 +103,7 @@
         }
 
     }
-    [self.OneBtn setTitle:[model.status isEqualToString:@"1"]  ? @"  幸运号码  ":@"   去晒单   " forState:(UIControlStateNormal)];
+    [self.OneBtn setTitle:[model.status isEqualToString:@"1"]  ? @"  夺宝编号  ":@"   去晒单   " forState:(UIControlStateNormal)];
 
     
     

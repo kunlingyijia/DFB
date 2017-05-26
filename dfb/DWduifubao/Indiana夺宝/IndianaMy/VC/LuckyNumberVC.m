@@ -16,6 +16,7 @@
 @property (nonatomic, assign) NSInteger pageIndex;
 ///数据
 @property (nonatomic,strong)NSMutableArray * dataArray;
+@property(nonatomic,strong)UIButton * btn;
 @end
 @implementation LuckyNumberVC
 #pragma mark -  视图将出现在屏幕之前
@@ -74,7 +75,7 @@
     label.textColor = [UIColor grayColor];
     label.font = [UIFont systemFontOfSize:16];
     label.textAlignment =NSTextAlignmentCenter;
-    label.text = @"幸运号码";
+    label.text = @"夺宝编号";
     [self.view addSubview:label];
 }
 #pragma mark - 关于数据
@@ -157,7 +158,6 @@
     if (indexPath.row>self.dataArray.count-1||self.dataArray.count==0) {
         return [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     }else{
-        
                 UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
                 //cell 赋值
                 cell.textLabel.text = self.dataArray[indexPath.row];
@@ -176,11 +176,8 @@
     if (indexPath.row> self.dataArray.count-1||self.dataArray.count==0) {
         return;
     }
-    [DWToastTool showToast:self.dataArray[indexPath.row]];
     
-    
-    [self.view hideToastActivity];
-    [self.view makeToast:self.dataArray[indexPath.row] duration:1.0 position:CSToastPositionCenter];
+   
     
 }
 #pragma mark - Cell的高度
@@ -193,6 +190,41 @@
 
 - (IBAction)BackAction:(UIButton *)sender {
      [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+//只要拖拽就会触发(scrollView 的偏移量发生改变)
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    scrollView= _tableView;
+    if (scrollView.contentOffset.y>_tableView.frame.size.height) {
+         if (!_btn) {
+            self.btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+            _btn.frame = CGRectMake(CGRectGetMaxX(self.tableView.frame)  -Width*0.1-10,CGRectGetMaxY(self.tableView.frame) -Width*0.1-10, Width*0.1, Width*0.1);
+            [_btn setImage:[UIImage imageNamed:@"向上返回箭头"] forState:(0)];
+            _btn.contentMode =UIViewContentModeScaleAspectFill;
+            _btn .backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
+            [_btn.layer setLaberMasksToBounds:YES cornerRadius:Width*0.05 borderWidth:0.3 borderColor:[UIColor grayColor]];
+            [_btn addTarget:self action:@selector(UpTo) forControlEvents:(UIControlEventTouchUpInside)];
+            [self.view addSubview:self.btn];
+        }
+    }else{
+        if (_btn) {
+            [_btn removeFromSuperview];
+            _btn = nil;
+        }
+    }
+    
+
+    
+    
+    
+}
+
+
+-(void)UpTo{
+    [_tableView setContentOffset:CGPointMake(0,0) animated:YES];
+    //[self.tableView scr];
 }
 
 

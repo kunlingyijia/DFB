@@ -46,7 +46,7 @@
     
                 [AttributedStr addAttribute:NSForegroundColorAttributeName
     
-                                      value:[UIColor blueColor]
+                                      value:[UIColor colorWithHexString:@"#1757ae"]
     
                                       range:NSMakeRange(5, model.schedule.length+1)];
     

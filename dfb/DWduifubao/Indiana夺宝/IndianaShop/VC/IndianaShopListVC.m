@@ -86,13 +86,14 @@
                 case 4:
                 {
                     if ([IsUp isEqualToString:@"0"]) {
-                        weakSelf.type = @"4";
-                        [weakSelf requestAction];
-                        //从低到高
-                    }else if ([IsUp isEqualToString:@"1"]){
                         weakSelf.type = @"5";
                         [weakSelf requestAction];
-                        //从高到低
+                      
+                         //从低到高
+                    }else if ([IsUp isEqualToString:@"1"]){
+                        weakSelf.type = @"4";
+                        [weakSelf requestAction];
+                          //从高到低
                     }
                     break;
                 }

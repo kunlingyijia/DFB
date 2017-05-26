@@ -153,6 +153,7 @@
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [[LoadWaitSingle shareManager] hideLoadWaitView];
+      /*
     // 将商品详情界面图片等比例缩小至屏幕 JS
     NSString *smallImagesJS = @"var count = document.images.length;\
     for (var i = 0; i < count; i++) {\
@@ -162,8 +163,8 @@
     };";
     [webView stringByEvaluatingJavaScriptFromString:smallImagesJS];
     [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
-    
-   /*
+     */
+ 
     
     NSString *js=@"var script = document.createElement('script');"
     "script.type = 'text/javascript';"
@@ -184,7 +185,7 @@
     [webView stringByEvaluatingJavaScriptFromString:js];
     [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
     
-    */
+   
     //这里是js，主要目的实现对url的获取
     static  NSString * const jsGetImages =
     @"function getImages(){\

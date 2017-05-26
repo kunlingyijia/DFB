@@ -4853,7 +4853,7 @@
 				TargetAttributes = {
 					638152371D814511001760D6 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 2M7G83HE4L;
+						DevelopmentTeam = L8LDCNE6DV;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -5709,7 +5709,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Eztro Information Technology Co.Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Shenzhen Eztro Information Technology Co.Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2M7G83HE4L;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5741,7 +5741,7 @@
 					"$(PROJECT_DIR)/DWduifubao/ThirdPart/WXChatPay",
 					"$(PROJECT_DIR)/DWduifubao/ThirdPart/JPush-iOS-SDK-3/Lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.dfb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gd.dfb;
 				PRODUCT_NAME = "兑富宝";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5757,7 +5757,7 @@
 				CODE_SIGN_ENTITLEMENTS = "DWduifubao/兑富宝.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Eztro Information Technology Co.Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2M7G83HE4L;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5789,7 +5789,7 @@
 					"$(PROJECT_DIR)/DWduifubao/ThirdPart/WXChatPay",
 					"$(PROJECT_DIR)/DWduifubao/ThirdPart/JPush-iOS-SDK-3/Lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.dfb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gd.dfb;
 				PRODUCT_NAME = "兑富宝";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

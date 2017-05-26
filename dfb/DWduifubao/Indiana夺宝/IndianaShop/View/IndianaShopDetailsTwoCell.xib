@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="440" height="535"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="440" height="535"/>
+                <rect key="frame" x="0.0" y="0.0" width="440" height="534"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qQ-so-BtM">
@@ -60,7 +60,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="de7-pL-Dnp">
                                 <rect key="frame" x="0.0" y="10" width="440" height="104"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="020-微信" translatesAutoresizingMaskIntoConstraints="NO" id="xwA-o7-4dF">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="020-微信" translatesAutoresizingMaskIntoConstraints="NO" id="xwA-o7-4dF">
                                         <rect key="frame" x="40" y="25" width="53" height="53"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="xwA-o7-4dF" secondAttribute="height" id="kdA-vO-xxo"/>

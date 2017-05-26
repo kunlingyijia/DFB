@@ -113,7 +113,7 @@ typedef void(^PushOhter)();
     // 添加定位
     // [self AMap];
    // 版本更新
-    [self updateVerison];
+    //[self updateVerison];
     //关于手势
     [self gestrueViewAndInterView];
    
@@ -937,13 +937,13 @@ typedef void(^PushOhter)();
     
     
 }
-#pragma mark - 我的财富
+#pragma mark - 一元购
 -(void)MyWealth{
     
     //Push 跳转
     IndianaHomeVC * VC = [[IndianaHomeVC alloc]initWithNibName:@"IndianaHomeVC" bundle:nil];
     [self.navigationController  pushViewController:VC animated:YES];
-   // [self GetPublicController];
+    //[self GetPublicController];
     
 }
 

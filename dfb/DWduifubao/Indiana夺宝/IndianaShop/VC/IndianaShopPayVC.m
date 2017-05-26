@@ -123,9 +123,11 @@
 //密码正确
 - (void)inputCorrectCoverView:(JHCoverView *)control password:(NSString *)passWord
 {
+    
     NSString *Token =[AuthenticationModel getLoginToken];
     __weak typeof(self) weakself = self;
     if (Token.length!= 0) {
+        self.view.userInteractionEnabled = NO;
         BaseRequest *baseReq = [[BaseRequest alloc] init];
         baseReq.token = [AuthenticationModel getLoginToken];
         self.UserSunModel.tel =self.phoneTf.text;
@@ -137,7 +139,7 @@
         [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:Request_DbPayOrder sign:[baseReq.data MD5Hash] requestMethod:GET PushVC:self  success:^(id response) {
             NSLog(@"%@",response);
             if ([response[@"resultCode"] isEqualToString:@"1"]) {
-                
+                weakself.view.userInteractionEnabled = NO;
                 [weakself showToast:response[@"msg"]];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     //刷新一元购首页
@@ -151,6 +153,8 @@
                 
                 
             }else if ([response[@"resultCode"] isEqualToString:@"33"]) {
+                weakself.view.userInteractionEnabled = YES;
+
                 [weakself showToast:@"支付密码错误"];
                 [weakself alertWithTitle:@"支付密码错误" message: response[@"msg"] OKWithTitle:@"重新支付" CancelWithTitle:@"修改密码" withOKDefault:^(UIAlertAction *defaultaction) {
                     weakself.coverView.hidden = NO;
@@ -162,21 +166,28 @@
                 }];
             }else if ([response[@"resultCode"] isEqualToString:@"34"]) {
                 //                [weakself showToast:@"支付已被冻结，请隔天再试"];
-                
+                weakself.view.userInteractionEnabled = YES;
+
                 [ weakself alertWithTitle:@"支付已被冻结"message:response[@"msg"] OKWithTitle:@"取消" withOKDefault:^(UIAlertAction *defaultaction) {
                     
                 }];
                 
                 
             }else if ([response[@"resultCode"] isEqualToString:@"2006"]) {
+                weakself.view.userInteractionEnabled = YES;
+
                 [weakself showToast:@"已经是创业会员"];
             }else{
+                weakself.view.userInteractionEnabled = YES;
+
                 [weakself showToast:response[@"msg"]];
                 
             }
             
             
         } faild:^(id error) {
+            weakself.view.userInteractionEnabled = YES;
+
             NSLog(@"%@", error);
         }];
         

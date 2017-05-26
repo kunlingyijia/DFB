@@ -209,23 +209,34 @@
                     return cell;
                 }
                 else if (indexPath.row==1) {
-                    IndianaShopDetailsTwoCell * cell = [tableView dequeueReusableCellWithIdentifier:@"IndianaShopDetailsTwoCell" forIndexPath:indexPath];
-                    cell.IndianaShopDetailsTwoCellBlock=^(NSInteger tag){
-                        //Push 跳转
-                        CalculationDetailsVC * VC = [[CalculationDetailsVC alloc]initWithNibName:@"CalculationDetailsVC" bundle:nil];
-                        VC.lasttimeModel = self.lasttimeModel;
-//                        VC.CalculationDetailsVCBlock = ^(){
-//                            weakSelf.pageIndex =1;
-//                            [weakSelf requestGoodsInfo];
-//                        };
-                        [weakSelf.navigationController  pushViewController:VC animated:YES];
-                    };
-                    //cell 赋值
-                    if (self.lasttimeModel.luck_no.length !=0) {
-                        cell.model = self.lasttimeModel;
+                    
+                    
+                    if (self.lasttimeModel.luck_no.length != 0 ) {
+                        IndianaShopDetailsTwoCell * cell = [tableView dequeueReusableCellWithIdentifier:@"IndianaShopDetailsTwoCell" forIndexPath:indexPath];
+                        cell.IndianaShopDetailsTwoCellBlock=^(NSInteger tag){
+                            //Push 跳转
+                            CalculationDetailsVC * VC = [[CalculationDetailsVC alloc]initWithNibName:@"CalculationDetailsVC" bundle:nil];
+                            VC.lasttimeModel = self.lasttimeModel;
+                            //                        VC.CalculationDetailsVCBlock = ^(){
+                            //                            weakSelf.pageIndex =1;
+                            //                            [weakSelf requestGoodsInfo];
+                            //                        };
+                            [weakSelf.navigationController  pushViewController:VC animated:YES];
+                        };
+                        //cell 赋值
+                        if (self.lasttimeModel.luck_no.length !=0) {
+                            cell.model = self.lasttimeModel;
+                        }
+                        // cell 其他配置
+                        return cell;
+                    }else{
+                        return [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+
                     }
-                                     // cell 其他配置
-                    return cell;
+                    
+                    
+                    
+                    
                 }else{
                     IndianaShopDetailsThreeCell * cell = [tableView dequeueReusableCellWithIdentifier:@"IndianaShopDetailsThreeCell" forIndexPath:indexPath];
                     __weak typeof(self) weakSelf = self;
@@ -331,7 +342,7 @@
             if (indexPath.row==0) {
                 return self.tableView.rowHeight;
             }else if (indexPath.row==1) {
-                return self.lasttimeModel.luck_no.length !=0 ? Width/5*2.0 : 0.0;
+                return self.lasttimeModel.luck_no.length != 0 ? Width/5*2.0 : 0.0;
             }else{
                 return   self.tableView.rowHeight ;
             }
