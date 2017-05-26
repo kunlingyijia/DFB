@@ -36,6 +36,7 @@
 #pragma mark -  视图将出现在屏幕之前
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+  ///我这是在测试
 }
 #pragma mark - 视图已在屏幕上渲染完成
 -(void)viewDidAppear:(BOOL)animated{
