@@ -607,8 +607,6 @@ typedef void(^PushOhter)();
             break;
     }
 
-   
-    
 }
 //设置每个cell上下左右相距
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -664,28 +662,6 @@ typedef void(^PushOhter)();
             
         }
     }
-
-    
-//    
-//    if (section==0) {
-//    
-//    }else{
-//        ///热门活动
-//        @property (nonatomic,strong)NSMutableArray * HotArray;
-//        ///精选商品
-//        @property (nonatomic,strong)NSMutableArray * merchandiseArray;
-//        ///精选店铺
-//        @property (nonatomic,strong)NSMutableArray * recommendArr;
-//        
-//        if (self.HotArray.count==0) {
-//            
-//        }else if(merchandiseArray.count==0){
-//            
-//        }
-//        
-//        
-//    return  CGSizeMake([UIScreen mainScreen].bounds.size.width, 40);
-//    }
 }
 //灵活的设置每个分区的页脚的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
@@ -879,9 +855,6 @@ typedef void(^PushOhter)();
     //Push 跳转
     MyServiceVC * VC = [[MyServiceVC alloc]initWithNibName:@"MyServiceVC" bundle:nil];
     [self.navigationController  pushViewController:VC animated:YES];
-
-    
-    
 }
 -(void)dfFinanceBtn:(UIButton*)sender{
     
@@ -934,9 +907,9 @@ typedef void(^PushOhter)();
 -(void)MyWealth{
     
     //Push 跳转
-//    IndianaHomeVC * VC = [[IndianaHomeVC alloc]initWithNibName:@"IndianaHomeVC" bundle:nil];
-//    [self.navigationController  pushViewController:VC animated:YES];
-    [self GetPublicController];
+    IndianaHomeVC * VC = [[IndianaHomeVC alloc]initWithNibName:@"IndianaHomeVC" bundle:nil];
+    [self.navigationController  pushViewController:VC animated:YES];
+   // [self GetPublicController];
     
 }
 

@@ -181,7 +181,7 @@
     "}\";"
     "document.getElementsByTagName('head')[0].appendChild(script);";
     
-    js=[NSString stringWithFormat:js,Width,Width];
+    js=[NSString stringWithFormat:js,Width,Width-15];
     [webView stringByEvaluatingJavaScriptFromString:js];
     [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
     
