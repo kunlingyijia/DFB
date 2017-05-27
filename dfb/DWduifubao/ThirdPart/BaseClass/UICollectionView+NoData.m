@@ -13,7 +13,8 @@
 {
     if (rowCount == 0) {
         UIImageView * imageV= [[UIImageView alloc]init];
-        imageV.image = [UIImage imageNamed:@"暂无数据"];
+        //imageV.image = [UIImage imageNamed:@"暂无数据"];
+        imageV.image = image  ?   [UIImage imageNamed:image]:[UIImage imageNamed:@"暂无数据"] ;
         imageV.contentMode =  UIViewContentModeCenter;
         //imageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         imageV.clipsToBounds  = YES;
@@ -30,10 +31,7 @@
     if (cellArrary.count !=0) {
         for (NSString *cellStr in cellArrary) {
             [self registerNib:[UINib nibWithNibName:cellStr bundle:nil] forCellWithReuseIdentifier:cellStr];
-            
-            
-            
-        }
+           }
         
         
     }

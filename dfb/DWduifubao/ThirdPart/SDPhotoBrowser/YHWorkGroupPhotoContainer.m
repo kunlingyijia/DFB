@@ -90,9 +90,8 @@
         imageView.clipsToBounds = YES;
         imageView.hidden = NO;
         [imageView sd_setImageWithURL:obj placeholderImage:[UIImage imageNamed:@"敬请期待"]  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            
             if (image.size.width < itemW || image.size.height < itemW) {
-                imageView.contentMode = UIViewContentModeScaleAspectFit;
+                imageView.contentMode = UIViewContentModeScaleToFill;
             }
             
         }

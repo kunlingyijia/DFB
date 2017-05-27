@@ -73,6 +73,7 @@
     [_tableView tableViewregisterClassArray:@[@"UITableViewCell"]];
     [_tableView tableViewregisterNibArray:@[@"IndianaMyOneCell",@"IndianaMyTwoCell",@"IndianaMyThreeCell"]];
     
+
 }
 #pragma mark - 关于数据
 -(void)SET_DATA{
@@ -119,25 +120,16 @@
         baseReq.data = [AESCrypt encrypt:[dic yy_modelToJSONString] password:[AuthenticationModel getLoginKey]];
         [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:act sign:[baseReq.data MD5Hash] requestMethod:GET PushVC:self success:^(id response) {
             BaseResponse *baseRes = [BaseResponse yy_modelWithJSON:response];
-           
             if (baseRes.resultCode ==1) {
-                
-                
                 if (weakself.pageIndex == 1) {
                     [weakself.dataArray removeAllObjects];
                 }
                 NSMutableArray *arr = baseRes.data;
                 for (NSDictionary *dicData in arr) {
-                    
                 IndianaUserSunModel *model = [IndianaUserSunModel yy_modelWithJSON:dicData];
-                    
                     CGFloat goods_nameHeight = [NSString getTextHight:model.goods_name withSize:Width-30.0 withFont:15];
                     CGFloat times_noHeight = [NSString getTextHight:model.times_no withSize:Width-30.0 withFont:14];
                     CGFloat contentHeight = [NSString getTextHight:model.content withSize:Width-30.0 withFont:14];
-                    
-//                    CGFloat goods_nameHeight =[model.goods_name getTextHightWithWidth:Width-30 withFont:15];
-//                    CGFloat times_noHeight =[model.times_no getTextHightWithWidth:Width-30 withFont:14];
-//                    CGFloat contentHeight =[model.content getTextHightWithWidth:Width-30 withFont:14];
                     model.CellHeight = 20.0+goods_nameHeight+times_noHeight+contentHeight;
                 [weakself.dataArray addObject:model];
                 }
@@ -333,6 +325,12 @@
     NSInteger row = ceil(Count / 3.0);
     return Count==0 ? 0 :   (Width-20)/3*row+5*(row+1);
 }
+
+
+//只要拖拽就会触发(scrollView 的偏移量发生改变)
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    }
+
 #pragma mark - dealloc
 - (void)dealloc
 {

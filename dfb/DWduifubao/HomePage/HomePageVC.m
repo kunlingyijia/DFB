@@ -116,7 +116,6 @@ typedef void(^PushOhter)();
     //[self updateVerison];
     //关于手势
     [self gestrueViewAndInterView];
-   
     [self.collectionView registerClass:[HomePageHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomePageHeader"];
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"HomePageFooter"];
    //注册cell
@@ -930,20 +929,14 @@ typedef void(^PushOhter)();
         [self pushLoginController];
     }
 
-    
-    
-    
-   
-    
-    
 }
 #pragma mark - 一元购
 -(void)MyWealth{
     
     //Push 跳转
-    IndianaHomeVC * VC = [[IndianaHomeVC alloc]initWithNibName:@"IndianaHomeVC" bundle:nil];
-    [self.navigationController  pushViewController:VC animated:YES];
-    //[self GetPublicController];
+//    IndianaHomeVC * VC = [[IndianaHomeVC alloc]initWithNibName:@"IndianaHomeVC" bundle:nil];
+//    [self.navigationController  pushViewController:VC animated:YES];
+    [self GetPublicController];
     
 }
 

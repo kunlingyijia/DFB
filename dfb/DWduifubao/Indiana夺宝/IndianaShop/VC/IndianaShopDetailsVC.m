@@ -40,7 +40,6 @@
 #pragma mark - 视图已在屏幕上渲染完成
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
 }
 #pragma mark -  载入完成
 - (void)viewDidLoad {
@@ -262,8 +261,6 @@
                 IndianaShopDetailsFourCell * cell = [tableView dequeueReusableCellWithIdentifier:@"IndianaShopDetailsFourCell" forIndexPath:indexPath];
                 //cell 赋值
                 cell.model = indexPath.row >= self.dataArray.count ? nil :self.dataArray[indexPath.row];
-                
-                //cell.label.text = @"(IP:1992.168.0.1)\n参与时间 :2018-09-01 10:08\n本期购买:10分";
                 return cell;
                 break;
             }
@@ -405,9 +402,6 @@
         }
     }
 }
-
-
-
 #pragma mark - 总计赋值
 -(void)AllNmuber{
     NSString* promptStr = @"夺宝有风险,参与需谨慎";
@@ -453,8 +447,6 @@
     [self.navigationController  pushViewController:VC animated:YES];
 
 }
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
