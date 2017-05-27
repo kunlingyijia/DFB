@@ -55,9 +55,6 @@
         flowLayout.minimumInteritemSpacing =0;
         //设置滚动的方向
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        
-        
-        
         self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, (Width-50)/4+20) collectionViewLayout:flowLayout];
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.backgroundColor = [UIColor whiteColor];

@@ -72,8 +72,15 @@
      _counts.text = [NSString stringWithFormat:@"总需:%@",model.counts];
     _remaining.text = [NSString stringWithFormat:@"剩余:%d",[model.counts intValue]-[model.players intValue]
 ];
-
-    self.progressV.progress =[_model.schedule floatValue]/100 ;
+    
+    
+    NSString* remaining = [NSString stringWithFormat:@"剩余:%d",[model.counts intValue]-[model.players intValue]];
+    NSMutableAttributedString *remainingStr = [[NSMutableAttributedString alloc]initWithString:remaining];
+        [remainingStr addAttribute:NSForegroundColorAttributeName
+                          value:[UIColor redColor]
+                          range:NSMakeRange(3, remaining.length-3)];
+        _remaining.attributedText = remainingStr;
+       self.progressV.progress =[_model.schedule floatValue]/100 ;
     
     
     

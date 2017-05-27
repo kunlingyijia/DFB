@@ -140,7 +140,6 @@
             [_baseBottomView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
             weakSelf.baseBottomView.alpha = 0.0;
         } completion:^(BOOL finished) {
-           
              [weakSelf.baseBottomView removeFromSuperview];
             weakSelf.baseBottomView = nil;
         }];
