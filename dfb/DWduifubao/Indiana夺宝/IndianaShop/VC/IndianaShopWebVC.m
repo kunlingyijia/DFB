@@ -131,10 +131,9 @@
      "}\";"
      "document.getElementsByTagName('head')[0].appendChild(script);";
      
-     js=[NSString stringWithFormat:js,Width,Width];
+     js=[NSString stringWithFormat:js,Width,Width-15];
      [webView stringByEvaluatingJavaScriptFromString:js];
      [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
-     
     //这里是js，主要目的实现对url的获取
     static  NSString * const jsGetImages =
     @"function getImages(){\
