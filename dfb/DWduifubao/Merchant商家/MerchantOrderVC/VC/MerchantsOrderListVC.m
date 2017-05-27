@@ -206,7 +206,7 @@
 
     [[CTPopViewSingle  shareManager]showPopMenuSelecteWithFrame:[UIScreen mainScreen].bounds.size.width X:50 Y:74+10+30 item:_LeftArray action:^(NSInteger index) {
         NSLog(@"%ld",index);
-        weakSelf.status = [NSString stringWithFormat:@"%ld",index];
+        weakSelf.status = [NSString stringWithFormat:@"%ld",(long)index];
         [weakSelf.LeftBtn setTitle:[NSString stringWithFormat:@"%@",weakSelf.LeftArray[index]] forState:(UIControlStateNormal)];
 
      

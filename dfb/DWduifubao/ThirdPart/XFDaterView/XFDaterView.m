@@ -298,9 +298,9 @@
         if(component == 0){
             rowLab.text = [NSString stringWithFormat:@"%@年",yearArr[row%yearArr.count]];
         }else if(component == 1){
-            rowLab.text = [NSString stringWithFormat:@"%ld月",row%12+1];
+            rowLab.text = [NSString stringWithFormat:@"%d月",row%12+1];
         }else{
-            rowLab.text = [NSString stringWithFormat:@"%ld日",row%[self daysInSelectMonth]+1];
+            rowLab.text = [NSString stringWithFormat:@"%d日",row%[self daysInSelectMonth]+1];
         }
     }else if (_dateViewType == XFDateViewTypeTime){
         if(component == 0){

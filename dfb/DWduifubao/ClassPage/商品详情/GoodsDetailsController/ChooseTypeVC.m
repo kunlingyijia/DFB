@@ -146,7 +146,7 @@
                     NSInteger CarNumber =0;
                     CarNumber = [[AuthenticationModel getCarNumber] integerValue];
                     CarNumber = (CarNumber+[weakSelf.textTf.text integerValue]);
-                     [[NSUserDefaults standardUserDefaults]setValue:[NSString stringWithFormat:@"%ld",CarNumber] forKey:@"CarNumber"];
+                     [[NSUserDefaults standardUserDefaults]setValue:[NSString stringWithFormat:@"%ld",(long)CarNumber] forKey:@"CarNumber"];
                     //添加通知刷新购物车
                     [[NSNotificationCenter defaultCenter ]postNotificationName:@"RefreshGoodsCar" object:nil userInfo:nil];
                     [weakSelf showToast:@"已添加购物车"];
