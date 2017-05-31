@@ -18,7 +18,6 @@
 ///数据
 @property (nonatomic,strong)NSMutableArray * dataArray;
 @property(nonatomic,strong)UILabel *label;
-
 @end
 @implementation IndianaHomeOneVC
 - (void)awakeFromNib {
@@ -71,14 +70,11 @@
         self.label.tintColor = [UIColor lightGrayColor];
         self.label.numberOfLines = 2;
         [NSTimer scheduledTimerWithTimeInterval:3 repeats:YES block:^(NSTimer*_Nonnulltimer) {
-            
             CATransition*tran = [CATransition animation];
-            
             //tran.type=kCATransitionFade;
             //配置过度动画类型
             tran.type = @"cube";
             tran.subtype=kCATransitionFromTop;
-            
             [self.label.layer addAnimation:tran forKey:@"trans"];
             if (self.dataArray.count==0) {
                 return;

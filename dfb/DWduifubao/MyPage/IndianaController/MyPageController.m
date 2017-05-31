@@ -261,9 +261,7 @@ typedef void(^PushOhter)();
         //Push 跳转
         MessageViewController * VC = [[MessageViewController alloc]initWithNibName:@"MessageViewController" bundle:nil];
         [self.navigationController  pushViewController:VC animated:YES];
-        
     }else{
-        
         [self pushLoginController];
     }
     

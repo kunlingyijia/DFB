@@ -136,9 +136,16 @@
             NSLog(@"error.localizedDescription--%ld",error.code);
             faild(error);
             
-            
-           [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
+            NSString * errorStr =error.localizedDescription;
+            if (errorStr.length>1) {
+                 [SVProgressHUD showErrorWithStatus:  [error.localizedDescription   substringToIndex:error.localizedDescription.length-1]];
+            }else{
+                [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
+
+            }
+         
            // [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+           
             [[LoadWaitSingle shareManager] hideLoadWaitView];
         }];
        
@@ -207,7 +214,7 @@
         for (int i= 0; i< imageArr.count; i++) {
            UIImage * image =  [UIImage scaleImageAtPixel:imageArr [i] pixel:1024];
             //1.把图片转换成二进制流
-             NSData *imageData= [ UIImage scaleImage:image toKb:kb];
+            NSData *imageData= [ UIImage scaleImage:image toKb:kb];
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             formatter.dateFormat =@"yyyyMMddHHmmss";
             NSString *str = [formatter stringFromDate:[NSDate date]];
@@ -217,14 +224,21 @@
         }
       
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-        
+        //[SVProgressHUD showProgress:uploadProgress.fractionCompleted status:@"上传中"];
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
           success(responseObject[@"data"]);
          [[LoadWaitSingle shareManager] hideLoadWaitView];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         faild(error);
          [[LoadWaitSingle shareManager] hideLoadWaitView];
-         [SVProgressHUD showErrorWithStatus:@"图片上传失败"];
+//         [SVProgressHUD showErrorWithStatus:@"图片上传失败"];
+        NSString * errorStr =error.localizedDescription;
+        if (errorStr.length>1) {
+            [SVProgressHUD showErrorWithStatus:  [error.localizedDescription   substringToIndex:error.localizedDescription.length-1]];
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
+            
+        }
     }];
 
 }

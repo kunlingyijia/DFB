@@ -40,7 +40,7 @@
                                 <rect key="frame" x="0.0" y="28" width="80" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fz7-C6-0e9" id="WVT-9u-jHF">
-                                    <rect key="frame" x="0.0" y="0.0" width="80" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndz-up-3G6">
@@ -422,7 +422,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HuiYuanCellThree" id="T0z-Qw-6fY" customClass="HuiYuanCellThree">
-                                        <rect key="frame" x="223" y="80" width="149" height="75"/>
+                                        <rect key="frame" x="223" y="79.5" width="149" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="149" height="75"/>

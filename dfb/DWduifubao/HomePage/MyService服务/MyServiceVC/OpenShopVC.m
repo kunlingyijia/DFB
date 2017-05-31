@@ -66,7 +66,8 @@
             }
             [weakself.tableView reloadData];
         }else{
-            
+            [weakself showToast:baseRes.msg];
+ 
         }
     } faild:^(id error) {
         NSLog(@"%@", error);
@@ -93,7 +94,7 @@
             }
             [weakself.tableView reloadData];
         }else{
-            
+            [weakself showToast:baseRes.msg];
         }
     } faild:^(id error) {
         NSLog(@"%@", error);
