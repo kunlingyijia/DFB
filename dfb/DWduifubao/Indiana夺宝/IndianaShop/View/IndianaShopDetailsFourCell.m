@@ -23,13 +23,13 @@
     //Cell右侧箭头
 //    self.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     self.separatorInset = UIEdgeInsetsMake(0, Width, 0, 0); // ViewWidth  [宏] 指的是手机屏幕的宽度
-    [_avatar_url.layer setLaberMasksToBounds:YES cornerRadius:3.0 borderWidth:0.8 borderColor:[UIColor colorWithHexString:kViewBackgroundColor]];
+    [_avatar_url.layer setLaberMasksToBounds:YES cornerRadius:_avatar_url.frame.size.width/2 borderWidth:0.8 borderColor:[UIColor colorWithHexString:kViewBackgroundColor]];
     
 }
 -(void)setModel:(IndianaUserSunModel *)model{
     if (!model) return;
     _model = model;
-    [_avatar_url SD_WebimageUrlStr:model.avatar_url placeholderImage:nil];
+    [_avatar_url SD_WebimageUrlStr:model.avatar_url placeholderImage:@"图层-15-拷贝-2"];
     _nick_name.text = [NSString stringWithFormat:@"参与者  %@", model.nick_name ];
     // cell 其他配置
     NSString * str =[NSString stringWithFormat:@"(IP:%@)\n参与时间 :%@\n本期购买:%@份",_model.ip,_model.create_time,_model.number];

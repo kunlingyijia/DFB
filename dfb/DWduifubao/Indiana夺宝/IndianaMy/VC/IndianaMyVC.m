@@ -130,7 +130,7 @@
                     CGFloat goods_nameHeight = [NSString getTextHight:model.goods_name withSize:Width-30.0 withFont:15];
                     CGFloat times_noHeight = [NSString getTextHight:model.times_no withSize:Width-30.0 withFont:14];
                     CGFloat contentHeight = [NSString getTextHight:model.content withSize:Width-30.0 withFont:14];
-                    model.CellHeight = 20.0+goods_nameHeight+times_noHeight+contentHeight;
+                    model.CellHeight = 22.0+goods_nameHeight+times_noHeight+contentHeight;
                 [weakself.dataArray addObject:model];
                 }
                 NSLog(@"-----%ld",weakself.dataArray .count);

@@ -905,10 +905,17 @@ typedef void(^PushOhter)();
 }
 #pragma mark - 一元购
 -(void)MyWealth{
+    NSString *Token =[AuthenticationModel getLoginToken];
+    if (Token.length!= 0) {
+        //Push 跳转
+        IndianaHomeVC * VC = [[IndianaHomeVC alloc]initWithNibName:@"IndianaHomeVC" bundle:nil];
+        [self.navigationController  pushViewController:VC animated:YES];
+    }else{
+        
+        [self pushLoginController];
+    }
+
     
-    //Push 跳转
-    IndianaHomeVC * VC = [[IndianaHomeVC alloc]initWithNibName:@"IndianaHomeVC" bundle:nil];
-    [self.navigationController  pushViewController:VC animated:YES];
    // [self GetPublicController];
     
 }

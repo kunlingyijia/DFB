@@ -216,7 +216,7 @@
 }
 #pragma mark - Cell的高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-       return Width* 0.25;
+       return Width* 0.3;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

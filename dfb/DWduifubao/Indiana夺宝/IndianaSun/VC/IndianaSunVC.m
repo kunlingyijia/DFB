@@ -114,8 +114,8 @@
                     IndianaUserSunModel *model = [IndianaUserSunModel yy_modelWithJSON:dicData];
                     CGFloat goods_nameHeight = [NSString getTextHight:model.goods_name withSize:Width-30 withFont:15];
                     CGFloat times_noHeight = [NSString getTextHight:model.times_no withSize:Width-30 withFont:14];
-                    CGFloat contentHeight = [NSString getTextHight:model.content withSize:Width-30 withFont:14];
-                    model.CellHeight = 20+goods_nameHeight+times_noHeight+contentHeight;
+                    CGFloat contentHeight = [NSString getTextHight:model.content withSize:Width-30.0 withFont:14];
+                    model.CellHeight = 22+goods_nameHeight+times_noHeight+contentHeight;
                     [weakself.dataArray addObject:model];
                 }
                 //刷新

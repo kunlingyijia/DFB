@@ -11,7 +11,9 @@
 #import "PhotoViewController.h"
 #import "LoadWaitSingle.h"
 @interface IndianaShopWebVC ()<UIWebViewDelegate>
-@property (strong, nonatomic)  UIWebView *webview;
+@property (weak, nonatomic) IBOutlet UIWebView *webview;
+
+
 ///数据
 @property (nonatomic,strong)NSMutableArray * dataArray;
 
@@ -50,10 +52,9 @@
     self.title = @"商品详情";
     [self showBackBtn];
     [[LoadWaitSingle shareManager]showLoadWaitViewImage:@"兑富宝加载等待图"];
-    self.webview = [[UIWebView alloc]initWithFrame:self.view.frame];
-    self.webview.delegate = self;
+
    [_webview.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
-    [self.view addSubview:_webview];
+
 }
 /**
  *  监听属性值发生改变时回调
