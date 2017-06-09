@@ -75,7 +75,7 @@
     label.textColor = [UIColor grayColor];
     label.font = [UIFont systemFontOfSize:16];
     label.textAlignment =NSTextAlignmentCenter;
-    label.text = @"夺宝编号";
+    label.text = @"YY编号";
     [self.view addSubview:label];
 }
 #pragma mark - 关于数据

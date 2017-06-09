@@ -44,6 +44,8 @@
 #pragma mark -  载入完成
 - (void)viewDidLoad {
     [super viewDidLoad];
+    ////刷新
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestGoodsInfo) name:@"RefreshIndianaShopDetailsVC" object:nil];
     //关于UI
     [self SET_UI];
     //关于数据

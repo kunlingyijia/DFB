@@ -47,7 +47,7 @@
 }
 #pragma mark - 关于UI
 -(void)SET_UI{
-    self.title = @"我的夺宝";
+    self.title = @"我的YY";
     __weak typeof(self) weakSelf = self;
     [self showBackBtn:^{
         for (UIViewController *tempVC in weakSelf.navigationController.viewControllers) {

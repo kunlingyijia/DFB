@@ -248,4 +248,11 @@
 }
 
 
+//夺宝手机号
++(NSString*)getindiana_moblie{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return  [userDefaults objectForKey:@"indiana_moblie"];
+    
+}
+
 @end

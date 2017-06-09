@@ -49,6 +49,7 @@
 }
 #pragma mark - 关于UI
 -(void)SET_UI{
+    [self.phoneTf becomeFirstResponder];
     self.submitBtn.backgroundColor = [UIColor grayColor];
     self.submitBtn.userInteractionEnabled = NO;
     [self.goods_image.layer setLaberMasksToBounds:YES cornerRadius:5.0 borderWidth:0.8 borderColor:[UIColor colorWithHexString:kViewBackgroundColor]];
@@ -60,7 +61,9 @@
 }
 #pragma mark - 关于数据
 -(void)SET_DATA{
- 
+    
+    NSString *moblie = [AuthenticationModel getindiana_moblie];;
+    self.phoneTf.text = moblie.length==0 ?@"":moblie;
     [self.goods_image SD_WebimageUrlStr:self.UserSunModel.goods_image placeholderImage:nil];
     self.goods_name.text = self.UserSunModel.goods_name;
     self.times_no.text =[NSString stringWithFormat:@"第%@期", self.UserSunModel.times_no];
@@ -138,6 +141,7 @@
         baseReq.data = [AESCrypt encrypt:[self.UserSunModel yy_modelToJSONString ]password:[AuthenticationModel getLoginKey]];
         [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:Request_DbPayOrder sign:[baseReq.data MD5Hash] requestMethod:GET PushVC:self  success:^(id response) {
             NSLog(@"%@",response);
+            [[NSUserDefaults standardUserDefaults]setObject:weakself.phoneTf.text forKey:@"indiana_moblie"];
             if ([response[@"resultCode"] isEqualToString:@"1"]) {
                 weakself.view.userInteractionEnabled = NO;
                 [weakself showToast:response[@"msg"]];
@@ -152,6 +156,20 @@
                 
                 
                 
+            } else if ([response[@"resultCode"] isEqualToString:@"2101"]||[response[@"resultCode"] isEqualToString:@"2104"]||[response[@"resultCode"] isEqualToString:@"2105"]) {
+                //2101:期数不存在
+                //2104:商品未开启
+                //2105:已结束，谢谢参与！
+                [weakself showToast:response[@"msg"]];
+                weakself.view.userInteractionEnabled = NO;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    //刷新一元购首页
+                    [[NSNotificationCenter defaultCenter]postNotificationName:@"RefreshIndianaHomeVC" object:nil];
+                    //刷新商品
+                    [[NSNotificationCenter defaultCenter]postNotificationName:@"RefreshIndianaShopDetailsVC" object:nil];
+                    [weakself.navigationController popViewControllerAnimated:YES];
+                    
+                });
             }else if ([response[@"resultCode"] isEqualToString:@"33"]) {
                 weakself.view.userInteractionEnabled = YES;
 

@@ -30,6 +30,7 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     //Cell右侧箭头
     //self.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    [self.goods_image.layer setLaberMasksToBounds:YES cornerRadius:3.0 borderWidth:0.8 borderColor:[UIColor colorWithHexString:kViewBackgroundColor]];
     self.separatorInset = UIEdgeInsetsMake(0, Width, 0, 0); // ViewWidth  [宏] 指的是手机屏幕的宽度
 }
 
@@ -103,7 +104,7 @@
         }
 
     }
-    [self.OneBtn setTitle:[model.status isEqualToString:@"1"]  ? @"  夺宝编号  ":@"   去晒单   " forState:(UIControlStateNormal)];
+    [self.OneBtn setTitle:[model.status isEqualToString:@"1"]  ? @"  YY编号  ":@"   去晒单   " forState:(UIControlStateNormal)];
 
     
     

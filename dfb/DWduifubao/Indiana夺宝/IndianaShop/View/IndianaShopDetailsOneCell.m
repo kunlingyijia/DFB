@@ -66,14 +66,22 @@
         self.status.text = @"已作废";
     }
     
-    self.goods_name.text =[NSString stringWithFormat:@"                %@", _model.goods_name];
+   // self.goods_name.text =[NSString stringWithFormat:@"                %@", _model.goods_name];
+    NSString* goods_name = [NSString stringWithFormat:@"                %@", _model.goods_name];
+    
+    NSMutableAttributedString *goods_nameStr = [[NSMutableAttributedString alloc]initWithString:goods_name];
+   // [goods_nameStr addAttribute:NSForegroundColorAttributeName
+//                         value:[UIColor redColor]
+//                         range:NSMakeRange(0, goods_name.length)];
+    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:5];
+    [goods_nameStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, goods_name.length)];
+    self.goods_name.attributedText = goods_nameStr;
     self.times_no.text =[NSString stringWithFormat:@"期号:第%@期", _model.times_no];
     _players.text = [NSString stringWithFormat:@"已购买:%@",model.players];
      _counts.text = [NSString stringWithFormat:@"总需:%@",model.counts];
     _remaining.text = [NSString stringWithFormat:@"剩余:%d",[model.counts intValue]-[model.players intValue]
 ];
-    
-    
     NSString* remaining = [NSString stringWithFormat:@"剩余:%d",[model.counts intValue]-[model.players intValue]];
     NSMutableAttributedString *remainingStr = [[NSMutableAttributedString alloc]initWithString:remaining];
         [remainingStr addAttribute:NSForegroundColorAttributeName

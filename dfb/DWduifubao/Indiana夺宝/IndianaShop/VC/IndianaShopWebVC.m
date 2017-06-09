@@ -73,7 +73,8 @@
                 _btn .backgroundColor = [UIColor colorWithHexString:kViewBackgroundColor];
                 [_btn.layer setLaberMasksToBounds:YES cornerRadius:Width*0.06 borderWidth:0.3 borderColor:[UIColor grayColor]];
                 [_btn addTarget:self action:@selector(UpTo) forControlEvents:(UIControlEventTouchUpInside)];
-                [self.view addSubview:self.btn];            }
+                [self.view addSubview:self.btn];
+            }
         }else{
             if (_btn) {
                 [_btn removeFromSuperview];
@@ -88,19 +89,15 @@
     if ([_webview subviews]) {
    UIScrollView* scrollView = [[_webview subviews] objectAtIndex:0];
         [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-    }
+}
     
 }
-
 #pragma mark - 关于数据
 -(void)SET_DATA{
     [self.webview loadHTMLString:self.goods_content baseURL:nil];
 
 }
-
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
     //    // 将商品详情界面图片等比例缩小至屏幕 JS
     //    NSString *smallImagesJS = @"var count = document.images.length;\
     //    for (var i = 0; i < count; i++) {\
@@ -110,13 +107,7 @@
     //    };";
     //    [webView stringByEvaluatingJavaScriptFromString:smallImagesJS];
     //    [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
-    
-
-    
-    
     [[LoadWaitSingle shareManager] hideLoadWaitView];
-
-    
      NSString *js=@"var script = document.createElement('script');"
      "script.type = 'text/javascript';"
      "script.text = \"function ResizeImages() { "
@@ -144,7 +135,6 @@
     };\
     return imgScr;\
     };";
-    
     [webView stringByEvaluatingJavaScriptFromString:jsGetImages];//注入js方法
     NSString *urlResurlt = [webView stringByEvaluatingJavaScriptFromString:@"getImages()"];
     self.dataArray = [NSMutableArray arrayWithArray:[urlResurlt componentsSeparatedByString:@"+"]];
@@ -165,45 +155,46 @@
     [webView stringByEvaluatingJavaScriptFromString:@"registerImageClickAction();"];
     
 }
+
 //在这个方法中捕获到图片的点击事件和被点击图片的url
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    
-    //预览图片
-    if ([request.URL.scheme isEqualToString:@"image-preview"]) {
-        NSString* path = [request.URL.absoluteString substringFromIndex:[@"image-preview:" length]];
-        NSLog(@"%@",path);
-        path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSLog(@"%@",path);
-        int index =0;
-        for (int i=0; i<self.dataArray.count; i++) {
-            if ([path isEqualToString:self.dataArray[i]]) {
-                index =i;
-            }
-        }
-        PhotoViewController *photoVC = [[PhotoViewController alloc] init];
-        photoVC.urlArray = self.dataArray;
-        photoVC.imgFrame = self.view.frame;
-        photoVC.index = index;
-        photoVC.imgData = [self getImageDataWithUrl:[self.dataArray objectAtIndex:index]];
-        
-        //[self presentViewController:photoVC animated:NO completion:nil];
-        
-        photoVC.indexBlock = ^(NSInteger index){
-            
-            
-            
-        };
-        
-        [photoVC setCompletedBlock:^(void){
-                 }];
-        
-        
-        
-        //path 就是被点击图片的url
-        return NO;
-    }
-    return YES;
-}
+//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+//    
+//    //预览图片
+//    if ([request.URL.scheme isEqualToString:@"image-preview"]) {
+//        NSString* path = [request.URL.absoluteString substringFromIndex:[@"image-preview:" length]];
+//        NSLog(@"%@",path);
+//        path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        NSLog(@"%@",path);
+//        int index =0;
+//        for (int i=0; i<self.dataArray.count; i++) {
+//            if ([path isEqualToString:self.dataArray[i]]) {
+//                index =i;
+//            }
+//        }
+//        PhotoViewController *photoVC = [[PhotoViewController alloc] init];
+//        photoVC.urlArray = self.dataArray;
+//        photoVC.imgFrame = self.view.frame;
+//        photoVC.index = index;
+//        photoVC.imgData = [self getImageDataWithUrl:[self.dataArray objectAtIndex:index]];
+//        
+//        //[self presentViewController:photoVC animated:NO completion:nil];
+//        
+//        photoVC.indexBlock = ^(NSInteger index){
+//            
+//            
+//            
+//        };
+//        
+//        [photoVC setCompletedBlock:^(void){
+//                 }];
+//        
+//        
+//        
+//        //path 就是被点击图片的url
+//        return NO;
+//    }
+//    return YES;
+//}
 
 - (NSData *)getImageDataWithUrl:(NSString *)url
 {

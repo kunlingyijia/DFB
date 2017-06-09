@@ -77,5 +77,9 @@
 //数据存储
 +(void)setValue:(id)response forkey:(NSString*)key;
 +(id)objectForKey:(NSString*)key;
+//夺宝手机号
++(NSString*)getindiana_moblie;
+
+
 
 @end

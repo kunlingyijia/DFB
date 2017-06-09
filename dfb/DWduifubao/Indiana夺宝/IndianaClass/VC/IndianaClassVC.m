@@ -78,15 +78,15 @@
         [weakself.tableView.mj_header endRefreshing];
         
     }];
-    //上拉加载
-    self.tableView. mj_footer=
-    [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        weakself.pageIndex ++ ;
-        NSLog(@"%ld",(long)weakself.pageIndex);
-        [weakself requestAction];
-        // 进入刷新状态后会自动调用这个block
-        [weakself.tableView.mj_footer endRefreshing];
-    }];
+//    //上拉加载
+//    self.tableView. mj_footer=
+//    [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+//        weakself.pageIndex ++ ;
+//        NSLog(@"%ld",(long)weakself.pageIndex);
+//        [weakself requestAction];
+//        // 进入刷新状态后会自动调用这个block
+//        [weakself.tableView.mj_footer endRefreshing];
+//    }];
     
     [self LocalData];
     
@@ -114,13 +114,10 @@
 -(void)requestAction{
     NSMutableDictionary *dic  =[ @{@"pageIndex":@(self.pageIndex),@"pageCount":@(10)}mutableCopy];
     __weak typeof(self) weakself = self;
-    
          BaseRequest *baseReq = [[BaseRequest alloc] init];
          baseReq.encryptionType = RequestMD5;
          baseReq.data =dic;
          [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:Request_DbCategoryList sign:[[baseReq.data yy_modelToJSONString] MD5Hash] requestMethod:GET PushVC:self success:^(id response) {
-             
-        
             BaseResponse *baseRes = [BaseResponse yy_modelWithJSON:response];
             if (baseRes.resultCode ==1) {
                 if (weakself.pageIndex == 1) {

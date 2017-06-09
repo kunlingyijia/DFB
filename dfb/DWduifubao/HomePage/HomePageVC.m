@@ -113,7 +113,7 @@ typedef void(^PushOhter)();
     // 添加定位
     // [self AMap];
    // 版本更新
-    //[self updateVerison];
+    [self updateVerison];
     //关于手势
     [self gestrueViewAndInterView];
     [self.collectionView registerClass:[HomePageHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomePageHeader"];
@@ -903,7 +903,7 @@ typedef void(^PushOhter)();
     }
 
 }
-#pragma mark - 一元购
+#pragma mark - YY购
 -(void)MyWealth{
     NSString *Token =[AuthenticationModel getLoginToken];
     if (Token.length!= 0) {

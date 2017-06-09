@@ -220,49 +220,49 @@
     
     
 }
-//在这个方法中捕获到图片的点击事件和被点击图片的url
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    
-    //预览图片
-    if ([request.URL.scheme isEqualToString:@"image-preview"]) {
-        NSString* path = [request.URL.absoluteString substringFromIndex:[@"image-preview:" length]];
-        NSLog(@"%@",path);
-        path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSLog(@"%@",path);
-        
-        int index =0;
-        
-        for (int i=0; i<self.dataArray.count; i++) {
-            if ([path isEqualToString:self.dataArray[i]]) {
-                index =i;
-            }
-        }
-        PhotoViewController *photoVC = [[PhotoViewController alloc] init];
-        photoVC.urlArray = self.dataArray;
-        //    SDCollectionViewCell * Cell=[cycleScrollView.mainView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-        photoVC.imgFrame = self.view.frame;
-        photoVC.index = index;
-        //photoVC.frameArray = [_frameArray copy];
-        photoVC.imgData = [self getImageDataWithUrl:[self.dataArray objectAtIndex:index]];
-        //[self presentViewController:photoVC animated:NO completion:nil];
-        photoVC.indexBlock = ^(NSInteger index){
-        //[cycleScrollView ImageContentOffset:CGPointMake(index*Width,0)];
-            
-        };
-        
-        [photoVC setCompletedBlock:^(void){
-            //        [_coverView removeFromSuperview];
-            //        _coverView = nil;
-        }];
-
-        
-        
-        //path 就是被点击图片的url
-        return NO;
-    }
-    return YES;
-}
-
+////在这个方法中捕获到图片的点击事件和被点击图片的url
+//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+//    
+//    //预览图片
+//    if ([request.URL.scheme isEqualToString:@"image-preview"]) {
+//        NSString* path = [request.URL.absoluteString substringFromIndex:[@"image-preview:" length]];
+//        NSLog(@"%@",path);
+//        path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        NSLog(@"%@",path);
+//        
+//        int index =0;
+//        
+//        for (int i=0; i<self.dataArray.count; i++) {
+//            if ([path isEqualToString:self.dataArray[i]]) {
+//                index =i;
+//            }
+//        }
+//        PhotoViewController *photoVC = [[PhotoViewController alloc] init];
+//        photoVC.urlArray = self.dataArray;
+//        //    SDCollectionViewCell * Cell=[cycleScrollView.mainView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+//        photoVC.imgFrame = self.view.frame;
+//        photoVC.index = index;
+//        //photoVC.frameArray = [_frameArray copy];
+//        photoVC.imgData = [self getImageDataWithUrl:[self.dataArray objectAtIndex:index]];
+//        //[self presentViewController:photoVC animated:NO completion:nil];
+//        photoVC.indexBlock = ^(NSInteger index){
+//        //[cycleScrollView ImageContentOffset:CGPointMake(index*Width,0)];
+//            
+//        };
+//        
+//        [photoVC setCompletedBlock:^(void){
+//            //        [_coverView removeFromSuperview];
+//            //        _coverView = nil;
+//        }];
+//
+//        
+//        
+//        //path 就是被点击图片的url
+//        return NO;
+//    }
+//    return YES;
+//}
+//
 - (NSData *)getImageDataWithUrl:(NSString *)url
 {
     NSData *imageData = nil;

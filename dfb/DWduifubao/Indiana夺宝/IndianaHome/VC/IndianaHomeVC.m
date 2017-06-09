@@ -56,7 +56,7 @@
 #pragma mark - 关于UI
 -(void)SET_UI{
     [self showBackBtn];
-    self.title = @"一元购";
+    self.title = @"YY购";
     //注册cell
     [self.collectionView collectionViewregisterNibArray:@[@"IndianaHomeTwoVC",@"IndianaHomeOneVC",@"IndianaHomeNoDataCell"]];
    
