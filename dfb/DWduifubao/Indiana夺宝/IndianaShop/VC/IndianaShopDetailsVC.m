@@ -36,6 +36,7 @@
 #pragma mark -  视图将出现在屏幕之前
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self requestGoodsInfo];
 }
 #pragma mark - 视图已在屏幕上渲染完成
 -(void)viewDidAppear:(BOOL)animated{
@@ -44,8 +45,8 @@
 #pragma mark -  载入完成
 - (void)viewDidLoad {
     [super viewDidLoad];
-    ////刷新
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestGoodsInfo) name:@"RefreshIndianaShopDetailsVC" object:nil];
+//    ////刷新
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestGoodsInfo) name:@"RefreshIndianaShopDetailsVC" object:nil];
     //关于UI
     [self SET_UI];
     //关于数据
@@ -85,7 +86,7 @@
     [self  AllNmuber ];
     self.dataArray = [NSMutableArray arrayWithCapacity:0];
     self.pageIndex =1;
-    [self requestGoodsInfo];
+    //[self requestGoodsInfo];
     //上拉刷新下拉加载
     [self Refresh];
 }
@@ -121,9 +122,8 @@
                 NSMutableDictionary * dataDic = baseRes.data;
                 weakself.ShopModel  = [IndianaShopModel yy_modelWithJSON:dataDic[@"goods"]];
                 NSLog(@"----%@", dataDic[@"goods"]);
-                
                 weakself.lasttimeModel = [last_timeModel yy_modelWithJSON:dataDic[@"lastTime"]];
-                
+                //[weakself countdown:10];
                 //刷新
                 //[weakself.tableView reloadData];
                 [weakself requestAction];
@@ -449,6 +449,60 @@
     [self.navigationController  pushViewController:VC animated:YES];
 
 }
+
+
+- (void)countdown:(NSInteger )seconds{
+    __weak typeof(self) weakSelf = self;
+    UIButton *btn = self.submitBtn;
+    self.submitBtn.backgroundColor = [UIColor redColor];
+    btn.userInteractionEnabled = NO;
+    __block NSInteger timeout=seconds; //倒计时时间
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0);
+    //每秒执行
+    dispatch_source_set_event_handler(_timer, ^{
+        if(timeout<=0){
+            //倒计时结束，关闭
+            //倒计时结束 改变颜色
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //设置界面的按钮显示 根据自己需求设置
+                [btn setTitle:@"立即购买" forState:UIControlStateNormal];
+                btn.userInteractionEnabled = YES;
+            });
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //设置界面的按钮显示 根据自己需求设置
+                NSString *strTime = [weakSelf getMMSSFromSS:timeout];
+                [btn setTitle:[NSString stringWithFormat:@"%@",strTime] forState:UIControlStateNormal];
+                btn.userInteractionEnabled = NO;
+            });
+            timeout--;
+        }
+    });
+    dispatch_resume(_timer);
+}
+//传入 秒  得到 xx:xx:xx
+-(NSString *)getMMSSFromSS:(NSInteger )seconds{
+//    NSInteger seconds = [totalTime integerValue];
+    //format of hour
+    NSString *str_hour = [NSString stringWithFormat:@"%02ld",seconds/3600];
+    //format of minute
+    NSString *str_minute = [NSString stringWithFormat:@"%02ld",(seconds%3600)/60];
+    //format of second
+    NSString *str_second = [NSString stringWithFormat:@"%02ld",seconds%60];
+    //format of time
+    NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@",str_hour,str_minute,str_second];
+    
+    return format_time;
+    
+}
+
+
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

@@ -99,7 +99,7 @@
                 //倒计时结束 改变颜色
                 dispatch_source_cancel(_timer);
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    //设置界面的按钮显示 根据自己需求设置
+                //设置界面的按钮显示 根据自己需求设置
                     [btn setTitle:@"发送验证码" forState:UIControlStateNormal];
                     btn.userInteractionEnabled = YES;
                 });
@@ -107,7 +107,7 @@
                 int seconds = timeout % 120;
                 NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    //设置界面的按钮显示 根据自己需求设置
+                //设置界面的按钮显示 根据自己需求设置
                     //NSLog(@"____%@",strTime);
                     [UIView beginAnimations:nil context:nil];
                     [UIView setAnimationDuration:1];
@@ -119,7 +119,6 @@
             }
         });
         dispatch_resume(_timer);
-        
         RequestVerifyCode *verifyCode = [[RequestVerifyCode alloc] init];
         verifyCode.mobile = self.phoneNumber.text;
         verifyCode.type = 1;
@@ -127,16 +126,12 @@
         baseReq.data = [verifyCode yy_modelToJSONObject];
         baseReq.encryptionType = RequestMD5;
         [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:Request_Code sign:[[baseReq.data yy_modelToJSONString] MD5Hash] requestMethod:GET PushVC:self success:^(id response) {
-           
             BaseResponse *baseRes = [BaseResponse yy_modelWithJSON:response];
             if (baseRes.resultCode == 1) {
                 [weakSelf showToast:@"获取验证码成功"];
-
             }else {
                 [self showToast:response[@"msg"]];
             }
-
- 
         } faild:^(id error) {
            
         }];
@@ -159,7 +154,6 @@
 #pragma mark -//"地区选择"的事件
 - (IBAction)selectAreaBtnAction:(id)sender {
     [self.view endEditing:YES];
-    
     [self createPickerView];
 }
 
@@ -169,7 +163,6 @@
 //    RegistrationAgreementViewController * VC = [[RegistrationAgreementViewController alloc]init];
 //    [self.navigationController  pushViewController:VC animated:YES];
     //4-注册协议 5-权益说明 7-O2O收款说明
-
     ArticleVC * VC = [[ArticleVC alloc]initWithNibName:@"ArticleVC" bundle:nil];
     VC.type = @"4";
     [self.navigationController  pushViewController:VC animated:YES];

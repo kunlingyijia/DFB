@@ -283,7 +283,7 @@
     return imageData;
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    [SVProgressHUD showErrorWithStatus:@"网络无法连接"];
+    //[SVProgressHUD showErrorWithStatus:@"网络无法连接"];
     [[LoadWaitSingle shareManager] hideLoadWaitView];
 }
 - (void)didReceiveMemoryWarning {

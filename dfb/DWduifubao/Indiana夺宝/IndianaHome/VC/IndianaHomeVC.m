@@ -35,12 +35,17 @@
 @end
 
 @implementation IndianaHomeVC
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self   requestBannerBornList];
 
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ////刷新一元购首页
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestBannerBorn) name:@"RefreshIndianaHomeVC" object:nil];
+//    ////刷新一元购首页
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestBannerBorn) name:@"RefreshIndianaHomeVC" object:nil];
         //UI
     [self SET_UI];
     //数据
@@ -73,8 +78,7 @@
     self.type = @"1";
     //上拉刷新下拉加载
     [self Refresh];
-    [self   requestBannerBornList];
-    NSLog(@"%@",[NSString getIPAddress:NO]);
+       NSLog(@"%@",[NSString getIPAddress:NO]);
 }
 -(void)Refresh{
     //下拉刷新

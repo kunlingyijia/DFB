@@ -68,7 +68,7 @@
         __block   NSInteger  count = 0;
         self.label.font = [UIFont systemFontOfSize:12];
         self.label.tintColor = [UIColor lightGrayColor];
-        self.label.numberOfLines = 2;
+        self.label.numberOfLines = 1 ;
         [NSTimer scheduledTimerWithTimeInterval:3 repeats:YES block:^(NSTimer*_Nonnulltimer) {
             CATransition*tran = [CATransition animation];
             //tran.type=kCATransitionFade;

@@ -31,6 +31,7 @@
 #pragma mark - 视图已在屏幕上渲染完成
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+     [self requestAction];
 }
 #pragma mark -  载入完成
 - (void)viewDidLoad {
@@ -118,7 +119,7 @@
     self.pageIndex =1;
     self.category_id = self.ClassModel.category_id;
     self.type = @"1";
-    [self requestAction];
+   
     //上拉刷新下拉加载
     [self Refresh];
 }
@@ -141,7 +142,6 @@
         // 进入刷新状态后会自动调用这个block
         [weakself.tableView.mj_footer endRefreshing];
     }];
-    
 }
 #pragma mark - 网络请求
 -(void)requestAction{

@@ -15,7 +15,6 @@
 ///数据
 @property (nonatomic,strong)NSMutableArray * dataArray;
 @property(nonatomic,strong)UIButton * btn;
-
 @end
 
 @implementation GoodsDetailsViewController
@@ -24,15 +23,12 @@
         self.dataArray = [NSMutableArray arrayWithCapacity:1];
     }return _dataArray;
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
     //UI
     [self SET_UI];
     //延迟
     __weak typeof(self) weakSelf = self;
-    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.00001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         //NSLog(@"五秒");
         [weakSelf  SET_DATA];
@@ -253,7 +249,6 @@
     if (!imageData) {
         imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
     }
-    
     return imageData;
 }
 - (void)didReceiveMemoryWarning {

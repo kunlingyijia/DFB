@@ -17,13 +17,9 @@
 @property (nonatomic, assign) NSInteger pageIndex;
 ///数据
 @property (nonatomic,strong)NSMutableArray * dataArray;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ViewHeightConstraint;
-
 @property (weak, nonatomic) IBOutlet UILabel *luck_no;
 @property (strong, nonatomic)  UITextView *computing_result;
-
-
 @end
 @implementation Controller
 #pragma mark -  视图将出现在屏幕之前
@@ -82,8 +78,7 @@
     //上拉刷新下拉加载
     [self Refresh];
     NSLog(@"%@",[self.lasttimeModel yy_modelToJSONObject]);
-     self.luck_no.text = [NSString stringWithFormat:@"  最终结果: %@  ",self.lasttimeModel.luck_no];
-     self.computing_result.text = self.lasttimeModel.computing_result;
+    
    
 }
 -(void)Refresh{
@@ -125,6 +120,8 @@
                     IndianaUserSunModel *model = [IndianaUserSunModel yy_modelWithJSON:dicData];
                     [weakself.dataArray addObject:model];
                 }
+                weakself.luck_no.text = [NSString stringWithFormat:@"  最终结果: %@  ",self.lasttimeModel.luck_no];
+                weakself.computing_result.text = weakself.lasttimeModel.computing_result;
                 //刷新
                 [weakself.tableView reloadData];
             }else{
