@@ -57,10 +57,13 @@
 -(void)SET_UI{
     self.title = @"商品详情";
     [self showBackBtn];
-    self.submitBtn.layer.masksToBounds = YES;
-    self.submitBtn.layer.cornerRadius = 5.0;
     [self setUpTableView];
     [self ShowNodataView];
+    self.submitBtn.layer.masksToBounds = YES;
+    self.submitBtn.layer.cornerRadius = 5.0;
+    self.submitBtn.backgroundColor = [UIColor grayColor];
+
+    
 
     
 }
@@ -123,7 +126,22 @@
                 weakself.ShopModel  = [IndianaShopModel yy_modelWithJSON:dataDic[@"goods"]];
                 NSLog(@"----%@", dataDic[@"goods"]);
                 weakself.lasttimeModel = [last_timeModel yy_modelWithJSON:dataDic[@"lastTime"]];
-                //[weakself countdown:10];
+                if ([self.ShopModel.status isEqualToString:@"1"]) {
+                    weakself.submitBtn.userInteractionEnabled = YES;
+                    //weakself.submitBtn.backgroundColor = [UIColor orangeColor];
+                    if ([weakself.ShopModel.time_stamp_down intValue]>0) {
+                        weakself.submitBtn.backgroundColor = [UIColor grayColor];
+                        [weakself countdown:[weakself.ShopModel.time_stamp_down intValue]];
+                    }else{
+                        weakself.submitBtn.backgroundColor = [UIColor orangeColor];
+                    }
+                    
+                }else{
+                    weakself.submitBtn.userInteractionEnabled = NO;
+                    weakself.submitBtn.backgroundColor = [UIColor grayColor];
+                }
+                
+               
                 //刷新
                 //[weakself.tableView reloadData];
                 [weakself requestAction];
@@ -158,14 +176,7 @@
             //刷新
             [weakself.tableView reloadData];
             [weakself HiddenNodataView];
-            if ([self.ShopModel.status isEqualToString:@"1"]) {
-                weakself.submitBtn.userInteractionEnabled = YES;
-                weakself.submitBtn.backgroundColor = [UIColor orangeColor];
-                
-            }else{
-                weakself.submitBtn.userInteractionEnabled = NO;
-                weakself.submitBtn.backgroundColor = [UIColor grayColor];
-            }
+           
             
         }else{
             [weakself showToast:baseRes.msg];
@@ -454,8 +465,9 @@
 - (void)countdown:(NSInteger )seconds{
     __weak typeof(self) weakSelf = self;
     UIButton *btn = self.submitBtn;
-    self.submitBtn.backgroundColor = [UIColor redColor];
     btn.userInteractionEnabled = NO;
+    self.submitBtn.backgroundColor = [UIColor grayColor];
+
     __block NSInteger timeout=seconds; //倒计时时间
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
@@ -468,12 +480,15 @@
             dispatch_source_cancel(_timer);
             dispatch_async(dispatch_get_main_queue(), ^{
                 //设置界面的按钮显示 根据自己需求设置
+                weakSelf.submitBtn.backgroundColor = [UIColor orangeColor];
+
                 [btn setTitle:@"立即购买" forState:UIControlStateNormal];
                 btn.userInteractionEnabled = YES;
             });
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
-                //设置界面的按钮显示 根据自己需求设置
+                 weakSelf.submitBtn.backgroundColor = [UIColor grayColor];
+                                //设置界面的按钮显示 根据自己需求设置
                 NSString *strTime = [weakSelf getMMSSFromSS:timeout];
                 [btn setTitle:[NSString stringWithFormat:@"%@",strTime] forState:UIControlStateNormal];
                 btn.userInteractionEnabled = NO;

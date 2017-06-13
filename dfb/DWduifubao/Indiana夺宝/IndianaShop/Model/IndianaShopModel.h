@@ -60,6 +60,8 @@
 
 ///是否评价 0-否 1-是
 @property (nonatomic, strong) NSString  *is_comment ;
+///剩余时间倒计时（秒）
+@property (nonatomic, strong) NSString  *time_stamp_down ;
 
 
 
