@@ -481,14 +481,13 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 //设置界面的按钮显示 根据自己需求设置
                 weakSelf.submitBtn.backgroundColor = [UIColor orangeColor];
-
                 [btn setTitle:@"立即购买" forState:UIControlStateNormal];
                 btn.userInteractionEnabled = YES;
             });
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                  weakSelf.submitBtn.backgroundColor = [UIColor grayColor];
-                                //设置界面的按钮显示 根据自己需求设置
+                //设置界面的按钮显示 根据自己需求设置
                 NSString *strTime = [weakSelf getMMSSFromSS:timeout];
                 [btn setTitle:[NSString stringWithFormat:@"%@",strTime] forState:UIControlStateNormal];
                 btn.userInteractionEnabled = NO;

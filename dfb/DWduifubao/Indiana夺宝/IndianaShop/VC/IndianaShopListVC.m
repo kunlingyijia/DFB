@@ -209,10 +209,7 @@
     //Push 跳转
     IndianaShopDetailsVC * VC = [[IndianaShopDetailsVC alloc]initWithNibName:@"IndianaShopDetailsVC" bundle:nil];
     VC.goods_id = ((IndianaShopModel*)self.dataArray[indexPath.row]).goods_id;
-    [self.navigationController  pushViewController:VC animated:YES];
-
-    
-    
+    [self.navigationController  pushViewController:VC animated:YES];    
 }
 #pragma mark - Cell的高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

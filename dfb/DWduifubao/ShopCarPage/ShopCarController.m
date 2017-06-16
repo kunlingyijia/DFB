@@ -47,6 +47,7 @@
      self.tabBarItem.badgeValue = nil;
      [self.tableView reloadData];
     [AuthenticationModel moveCarNumber];
+    [AuthenticationModel moveindiana_moblie];
 
     
     

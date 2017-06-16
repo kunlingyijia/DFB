@@ -127,7 +127,7 @@
                 [AuthenticationModel moveLoginKey];
                 [AuthenticationModel moveLoginToken];
                 [AuthenticationModel moveCarNumber];
-
+                [AuthenticationModel moveindiana_moblie];
                 [weakself.navigationController popViewControllerAnimated:YES];
             }else{
                 [weakself showToast:response[@"msg"]];

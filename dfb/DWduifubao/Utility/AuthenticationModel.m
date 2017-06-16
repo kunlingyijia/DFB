@@ -254,5 +254,8 @@
     return  [userDefaults objectForKey:@"indiana_moblie"];
     
 }
-
+//删除
++(void)moveindiana_moblie{
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"indiana_moblie"];
+}
 @end

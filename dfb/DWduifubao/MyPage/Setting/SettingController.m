@@ -81,6 +81,7 @@
                 [AuthenticationModel moveLoginToken];
                 [AuthenticationModel moveLoginKey];
                 [AuthenticationModel moveCarNumber];
+                [AuthenticationModel moveindiana_moblie];
                 NSLog(@"%@",[AuthenticationModel getLoginToken]);
                 [self.navigationController popViewControllerAnimated:YES];
             }else{

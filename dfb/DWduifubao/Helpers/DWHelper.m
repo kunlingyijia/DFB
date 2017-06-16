@@ -122,6 +122,7 @@
                     [AuthenticationModel moveLoginToken];
                     [AuthenticationModel moveLoginKey];
                     [AuthenticationModel moveCarNumber];
+                    [AuthenticationModel moveindiana_moblie];
                     LoginController * LoginVC = [[LoginController alloc]initWithNibName:@"LoginController" bundle:nil];
                     [LoginVC LoginRefreshAction:^{
                     }];

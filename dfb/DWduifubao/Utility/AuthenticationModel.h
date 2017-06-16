@@ -79,7 +79,7 @@
 +(id)objectForKey:(NSString*)key;
 //夺宝手机号
 +(NSString*)getindiana_moblie;
-
-
+//删除
++(void)moveindiana_moblie;
 
 @end
