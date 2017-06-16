@@ -120,9 +120,10 @@
                     [[NSNotificationCenter defaultCenter]postNotificationName:@"设置别名" object:nil userInfo:[NSDictionary dictionaryWithObject:@"" forKey:@"pushAlias"]];
                     //Push 跳转
                     [AuthenticationModel moveLoginToken];
+                    [AuthenticationModel moveindiana_moblie];
                     [AuthenticationModel moveLoginKey];
                     [AuthenticationModel moveCarNumber];
-                    [AuthenticationModel moveindiana_moblie];
+                    
                     LoginController * LoginVC = [[LoginController alloc]initWithNibName:@"LoginController" bundle:nil];
                     [LoginVC LoginRefreshAction:^{
                     }];

@@ -119,15 +119,13 @@
        // baseReq.data = [AESCrypt encrypt:[[model yy_modelToJSONObject ] yy_modelToJSONString ]password:[AuthenticationModel getLoginKey]];
 
         [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:@"act=Api/User/requestChangePhone" sign:[baseReq.data MD5Hash] requestMethod:GET PushVC:self  success:^(id response) {
-            
             NSLog(@"-----%@",response);    //[weakself showToast:@"修改成功"];
-            
             if ([response[@"resultCode"] isEqualToString:@"1"]) {
                // [weakself showToast:@"更新成功"];
                 [AuthenticationModel moveLoginKey];
                 [AuthenticationModel moveLoginToken];
-                [AuthenticationModel moveCarNumber];
                 [AuthenticationModel moveindiana_moblie];
+                [AuthenticationModel moveCarNumber];
                 [weakself.navigationController popViewControllerAnimated:YES];
             }else{
                 [weakself showToast:response[@"msg"]];

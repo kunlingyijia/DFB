@@ -54,6 +54,7 @@
     //NSLog(@"%@",[AuthenticationModel getLoginToken]);
     [AuthenticationModel moveLoginToken];
     [AuthenticationModel moveLoginKey];
+     [AuthenticationModel moveindiana_moblie];
 //    [AuthenticationModel moveCarNumber];
     
     NSLog(@"%@",[AuthenticationModel getLoginToken]);
@@ -79,9 +80,9 @@
             NSLog(@"%@",response);
             if ([response[@"resultCode"] isEqualToString:@"1"]) {
                 [AuthenticationModel moveLoginToken];
+                 [AuthenticationModel moveindiana_moblie];
                 [AuthenticationModel moveLoginKey];
                 [AuthenticationModel moveCarNumber];
-                [AuthenticationModel moveindiana_moblie];
                 NSLog(@"%@",[AuthenticationModel getLoginToken]);
                 [self.navigationController popViewControllerAnimated:YES];
             }else{

@@ -746,9 +746,8 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
         [_gestureView GestureLogOut:^() {
             [weakSelf removeGestureViewFromSuperView];
             [AuthenticationModel moveLoginToken];
-            
-            [AuthenticationModel moveCarNumber];
             [AuthenticationModel moveindiana_moblie];
+            [AuthenticationModel moveCarNumber];
             //设置别名
             [[NSNotificationCenter defaultCenter]postNotificationName:@"设置别名" object:nil userInfo:[NSDictionary dictionaryWithObject:@"" forKey:@"pushAlias"]];
             [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"user_password"];
