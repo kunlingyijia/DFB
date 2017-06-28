@@ -158,7 +158,7 @@
     [btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.pickerBgView);
         make.right.equalTo(self.pickerBgView).with.offset(-10);
-        make.size.mas_equalTo(CGSizeMake(Width/2, 30));
+        make.size.mas_equalTo(CGSizeMake(Width/2, 40));
         
     }];
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];

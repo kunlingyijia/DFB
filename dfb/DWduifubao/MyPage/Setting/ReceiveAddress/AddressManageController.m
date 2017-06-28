@@ -48,7 +48,7 @@
     [self.view addSubview:self.tableView];
     
     //设置"新增收货地址"的按钮样式
-    UIButton *addAddressBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, Height-124, Width-40, 44)];
+    UIButton *addAddressBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, Height-124, Width-40, 40)];
     addAddressBtn.backgroundColor = [UIColor colorWithHexString:kRedColor];
     [addAddressBtn setTitle:@"新增收货地址" forState:UIControlStateNormal];
     [addAddressBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
