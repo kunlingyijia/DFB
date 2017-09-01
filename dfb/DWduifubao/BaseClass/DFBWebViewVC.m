@@ -13,15 +13,11 @@
     WYWebProgressLayer *_progressLayer; ///< 网页加载进度条
     int a;
 }
-
-
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIBarButtonItem *closeItem;
 
 @end
-
 @implementation DFBWebViewVC
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = self.closeItem;
@@ -31,7 +27,6 @@
     [self.navigationController.navigationBar.layer addSublayer:_progressLayer];
       a = 1;
 }
-
 - (void)initWebView{
     if (!self.webView) {
         self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64.1, Width, self.view.frame.size.height-64.1)];

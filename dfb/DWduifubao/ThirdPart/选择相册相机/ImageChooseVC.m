@@ -53,10 +53,8 @@
 #pragma mark--拍摄照片上传图像
 //拍摄照片上传图像
 -(void)addImageOFaddressPerson{
-    
     __weak typeof(self) weakSelf = self;
-    
-    [self alertActionSheetWithTitle:@"获取图片" message:nil OKWithTitleOne:@"相册" OKWithTitleTwo:@"拍照" CancelWithTitle:@"取消" withOKDefaultOne:^(UIAlertAction *defaultaction) {
+    [self alertActionSheetWithTitle:nil message:nil OKWithTitleOne:@"相册" OKWithTitleTwo:@"拍照" CancelWithTitle:@"取消" withOKDefaultOne:^(UIAlertAction *defaultaction) {
         //判断相册权限
         
         ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
@@ -65,7 +63,6 @@
             //无权限
             
             if (([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)) {
-                
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"照片权限被禁用" message:@"请在iPhone的'设置-隐私-照片'中允许兑富宝访问你的照片" preferredStyle:UIAlertControllerStyleAlert];
                 
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {

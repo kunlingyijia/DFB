@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface YHWorkGroupPhotoContainer : UIView
 
 @property (nonatomic, strong) NSArray *picUrlArray;//缩略图URL

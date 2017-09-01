@@ -154,6 +154,7 @@ typedef void(^PushOhter)();
         [weakself requestHomePageAction];
         //进入刷新状态后会自动调用这个block
         [weakself.collectionView.mj_header endRefreshing];
+        
    }];
     
     //上拉加载
@@ -771,8 +772,10 @@ typedef void(^PushOhter)();
 
     //Push 跳转
     LunBoImageViewController * VC = [[LunBoImageViewController alloc]init];
+    
     VC.urlStr = self.LunBoUrlArr[index];
     [self.navigationController  pushViewController:VC animated:YES];
+    
 }
 
 #pragma mark  - NavigationViewdelegate

@@ -122,8 +122,6 @@
        //去提现 进行会员判断
         [weakSelf ChongzhiPanduan];
         
-
-        
     }];
     UIAlertAction * OKthree = [UIAlertAction actionWithTitle:@"兑换" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         
@@ -134,26 +132,17 @@
         ExchangeGoldVC * VC = [[ExchangeGoldVC alloc]initWithNibName:@"ExchangeGoldVC" bundle:nil];
         VC.virtual_glodAndcash = [self.virtual_glodAndcashLabel.text floatValue];
         [self.navigationController  pushViewController:VC animated:YES];
-        
-        
-        
-    }];
+     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
-        
     }];
     [alertC addAction:OKone];
     [alertC addAction:OKtwo];
-    
     [alertC addAction:OKthree];
     [alertC addAction:cancel];
     [self presentViewController:alertC animated:YES completion:nil];
-    
-    
-    
 }
 #pragma mark - 创建充值按钮
 -(void)addChongZhiBtn{
-    
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(0, 0, 40, 40);
     backBtn.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -217,14 +206,12 @@
             if (self.pageIndex == 1) {
                 [self.dataArray removeAllObjects];
             }
-            
             if ([response[@"resultCode"] isEqualToString:@"1"]) {
-                NSArray *arr = response[@"data"];
+                NSArray * arr = response[@"data"];
                 for (NSDictionary *dicdata in arr) {
                     ScoreRecordModel *model = [ScoreRecordModel yy_modelWithJSON:dicdata];
                     [weakSelf.dataArray addObject:model];
                 }
-                
                 //刷新
                 [weakSelf.tableView reloadData];
 
@@ -240,9 +227,6 @@
     }else {
         
     }
-    
-   
-    
 }
 
 
@@ -296,10 +280,7 @@ __weak typeof(self) weakSelf = self;
 
 if (Token.length!= 0) {
     //Push 跳转
-    //Push 跳转
-    
-    
-    if ([type isEqualToString:@"2"]) {
+     if ([type isEqualToString:@"2"]) {
         NSLog(@"认证成功");
         [self is_BuyHuiyuan];
     }  else if ([type  isEqualToString:@"1"]){

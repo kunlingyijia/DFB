@@ -80,7 +80,7 @@
         MoneyViewController * VC = [[MoneyViewController alloc]initWithNibName:@"MoneyViewController" bundle:nil];
         VC.title = @"兑富金币记录";
         VC.act = @"act=Api/Score/requestVirtualGlodList";
-       VC.virtual_glodAndcash = self.personModel.virtual_glod;
+        VC.virtual_glodAndcash = self.personModel.virtual_glod;
         VC.titlelab = @"总兑富金币";
         [self.navigationController pushViewController:VC animated:YES];
     }else{

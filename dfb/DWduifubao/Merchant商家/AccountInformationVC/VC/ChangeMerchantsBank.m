@@ -151,8 +151,6 @@
 -(void)requestChangeBankCard{
     
     if ([self IF]) {
-        
-    
     NSString * isset_paypwd  = [NSString stringWithFormat:@"%@",[AuthenticationModel getisset_paypwd]];
         __weak typeof(self) weakSelf = self;
 

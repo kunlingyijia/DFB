@@ -5731,7 +5731,7 @@
 					/Users/xiyakun/Desktop/dfb/Pods/Masonry/Masonry/Masonry.h,
 					/Users/xiyakun/Desktop/dfb/DWduifubao/ThirdPart/AliPay,
 					/Users/xiyakun/Desktop/dfb/Pods/Masonry/Masonry/Masonry.h,
-					"/Users/xiyakun/Desktop/我的兑富宝/DFB/dfb/DWduifubao/ThirdPart/AliPay",
+					"$(SRCROOT)/DWduifubao/ThirdPart/AliPay",
 				);
 				INFOPLIST_FILE = DWduifubao/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -5780,7 +5780,7 @@
 					/Users/xiyakun/Desktop/dfb/Pods/Masonry/Masonry/Masonry.h,
 					/Users/xiyakun/Desktop/dfb/DWduifubao/ThirdPart/AliPay,
 					/Users/xiyakun/Desktop/dfb/Pods/Masonry/Masonry/Masonry.h,
-					"/Users/xiyakun/Desktop/我的兑富宝/DFB/dfb/DWduifubao/ThirdPart/AliPay",
+					"$(SRCROOT)/DWduifubao/ThirdPart/AliPay",
 				);
 				INFOPLIST_FILE = DWduifubao/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

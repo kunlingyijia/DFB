@@ -134,7 +134,7 @@
     
     [[DWHelper shareHelper] requestDataWithParm:[baseReq yy_modelToJSONString] act:@"act=Api/Article/requestDetailByType" sign:[[baseReq.data yy_modelToJSONString] MD5Hash] requestMethod:GET PushVC: self success:^(id response) {
         BaseResponse *baseRes = [BaseResponse yy_modelWithJSON:response];
-        NSLog(@"商品图文详情----%@",response);
+        NSLog(@"图文详情----%@",response);
         if (baseRes.resultCode == 1) {
             //反编译 [html HtmlToString]
             // [_webview loadHTMLString:[response[@"data"][@"content"] HtmlToString]baseURL:nil];
